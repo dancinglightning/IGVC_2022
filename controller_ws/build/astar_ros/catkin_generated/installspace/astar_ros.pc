@@ -1,0 +1,8 @@
+prefix=/home/hanan/Downloads/igvc_2022/controller_ws/install
+
+Name: astar_ros
+Description: Description of astar_ros
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

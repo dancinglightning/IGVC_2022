@@ -1,0 +1,8 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~enable" : \b [bool] Enable view control min: False, default: True, max: True
+- \b "~model_name" : \b [str] Gazebo model name to track min: , default: vehicle, max: 
+- \b "~view_dist" : \b [double] Fixed distance from robot min: 0.5, default: 20.0, max: 300.0
+

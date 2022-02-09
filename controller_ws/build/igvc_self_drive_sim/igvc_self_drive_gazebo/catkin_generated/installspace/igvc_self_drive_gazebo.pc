@@ -1,0 +1,8 @@
+prefix=/home/hanan/Downloads/igvc_2022/controller_ws/install
+
+Name: igvc_self_drive_gazebo
+Description: Description of igvc_self_drive_gazebo
+Version: 0.1.4
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

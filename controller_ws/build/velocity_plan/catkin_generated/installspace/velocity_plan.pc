@@ -1,0 +1,8 @@
+prefix=/home/hanan/Downloads/igvc_2022/controller_ws/install
+
+Name: velocity_plan
+Description: Description of velocity_plan
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

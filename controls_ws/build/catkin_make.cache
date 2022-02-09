@@ -1,0 +1,2 @@
+astar_ros:velocity_plan
+-DCATKIN_DEVEL_PREFIX=/home/pratham/igvc_2022/controls_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pratham/igvc_2022/controls_ws/install -G Unix Makefiles

@@ -1,0 +1,15 @@
+n = 200
+
+Solver:
+
+ma27 - 5.4 s (but straight line only)
+ma57 - 3.6 s (but straight line only)
+ma77 - 4.9 s (but straight line only)
+ma86 - 4.4 s (but straight line only)
+ma97 - crashes VS code (Never run !)
+pardiso - 2.9 s (but straight line only)
+wsmp - 2.5 s (but straight line only)
+custom - 3.7 s (but straight line only)
+mumps - 3: 7.6 s (Battery)
+        2: 49 s (Charging)
+

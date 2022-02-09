@@ -1,0 +1,9 @@
+\subsubsection usage Usage
+\verbatim
+<node name="igvc_self_drive_gazebo_plugins" pkg="igvc_self_drive_gazebo_plugins" type="igvc_self_drive_gazebo_plugins">
+  <param name="enable" type="bool" value="True" />
+  <param name="model_name" type="str" value="vehicle" />
+  <param name="view_dist" type="double" value="20.0" />
+</node>
+\endverbatim
+
