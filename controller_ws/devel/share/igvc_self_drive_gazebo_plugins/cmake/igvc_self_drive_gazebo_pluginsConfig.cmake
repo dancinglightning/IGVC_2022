@@ -67,14 +67,14 @@ set(igvc_self_drive_gazebo_plugins_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(igvc_self_drive_gazebo_plugins_SOURCE_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins)
-  set(igvc_self_drive_gazebo_plugins_DEVEL_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/devel)
+  set(igvc_self_drive_gazebo_plugins_SOURCE_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins)
+  set(igvc_self_drive_gazebo_plugins_DEVEL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/devel)
   set(igvc_self_drive_gazebo_plugins_INSTALL_PREFIX "")
   set(igvc_self_drive_gazebo_plugins_PREFIX ${igvc_self_drive_gazebo_plugins_DEVEL_PREFIX})
 else()
   set(igvc_self_drive_gazebo_plugins_SOURCE_PREFIX "")
   set(igvc_self_drive_gazebo_plugins_DEVEL_PREFIX "")
-  set(igvc_self_drive_gazebo_plugins_INSTALL_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/install)
+  set(igvc_self_drive_gazebo_plugins_INSTALL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/install)
   set(igvc_self_drive_gazebo_plugins_PREFIX ${igvc_self_drive_gazebo_plugins_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(igvc_self_drive_gazebo_plugins_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/hanan/Downloads/igvc_2022/controller_ws/devel/include " STREQUAL " ")
+if(NOT "/home/student/students/hanu/igvc_2022/controller_ws/devel/include " STREQUAL " ")
   set(igvc_self_drive_gazebo_plugins_INCLUDE_DIRS "")
-  set(_include_dirs "/home/hanan/Downloads/igvc_2022/controller_ws/devel/include")
+  set(_include_dirs "/home/student/students/hanu/igvc_2022/controller_ws/devel/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/hanan/Downloads/igvc_2022/controller_ws/devel/include " STREQUAL "
         message(FATAL_ERROR "Project 'igvc_self_drive_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'igvc_self_drive_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'igvc_self_drive_gazebo_plugins' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/${idir}'.  ${_report}")
     endif()
     _list_append_unique(igvc_self_drive_gazebo_plugins_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/hanan/Downloads/igvc_2022/controller_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/students/hanu/igvc_2022/controller_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

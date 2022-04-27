@@ -17,7 +17,7 @@
   <xacro:property name="body_length" value="0.6" />
 
   <xacro:macro name="rear_wheel" params="name x y z flip" >
-    <link name="wheel_${name}" >
+    <link name="link_wheel_${name}" >
       <visual>
         <origin xyz="0 0 0" rpy="0 ${flip * pi - pi/2} 0" />
         <geometry>
@@ -40,7 +40,7 @@
     </link>
     <joint name="wheel_${name}" type="continuous" >
       <parent link="base_link" />
-      <child link="wheel_${name}" />
+      <child link="link_wheel_${name}" />
       <origin xyz="${x} ${y} ${z}" rpy="-1.57079632679 0 0" />
       <axis xyz="0 0 1" />
       <limit effort="1000.0" velocity="22.0" />
@@ -48,7 +48,7 @@
   </xacro:macro>
 
   <xacro:macro name="front_wheel" params="name x y z flip" >
-    <link name="wheel_${name}" >
+    <link name="link_wheel_${name}" >
       <visual>
         <origin xyz="0 0 0" rpy="0 ${flip * pi - pi/2} 0" />
         <geometry>
@@ -65,11 +65,14 @@
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <mass value="${wheel_mass}"/>
-        <inertia ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}" ixy="0" ixz="0" iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}" iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}"/>
+        <inertia ixx="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}" 
+          ixy="0" ixz="0" 
+          iyy="${wheel_mass/12*(3*wheel_radius*wheel_radius + wheel_thickness*wheel_thickness)}" 
+          iyz="0" izz="${wheel_mass/2 * wheel_radius*wheel_radius}"/>
       </inertial>
     </link>
 
-    <link name="steer_${name}" >
+    <link name="link_steer_${name}" >
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <mass value="20.0"/>
@@ -79,15 +82,15 @@
 
     <joint name="steer_${name}" type="revolute" >
       <parent link="base_link" />
-      <child link="steer_${name}" />
+      <child link="link_steer_${name}" />
       <origin xyz="${x} ${y} ${z}" rpy="0 0 0" />
       <axis xyz="0 0 1" />
       <limit upper="0.6" lower="-0.6" effort="0.0" velocity="0.0" />
     </joint>
 
     <joint name="wheel_${name}" type="continuous" >
-      <parent link="steer_${name}" />
-      <child link="wheel_${name}" />
+      <parent link="link_steer_${name}" />
+      <child link="link_wheel_${name}" />
       <origin xyz="0 0 0" rpy="-1.57079632679 0 0" />
       <axis xyz="0 0 1" />
       <limit effort="1000.0" velocity="22.0" />

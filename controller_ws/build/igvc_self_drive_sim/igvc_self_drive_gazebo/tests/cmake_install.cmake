@@ -1,8 +1,8 @@
-# Install script for directory: /home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo/tests
+# Install script for directory: /home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_gazebo/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/hanan/Downloads/igvc_2022/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/student/students/hanu/igvc_2022/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -35,5 +35,10 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 

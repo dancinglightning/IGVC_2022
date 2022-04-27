@@ -1,8 +1,8 @@
-# Install script for directory: /home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description
+# Install script for directory: /home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/hanan/Downloads/igvc_2022/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/student/students/hanu/igvc_2022/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,25 +37,30 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/hanan/Downloads/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_description.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/student/students/hanu/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_description.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_description/cmake" TYPE FILE FILES
-    "/home/hanan/Downloads/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_descriptionConfig.cmake"
-    "/home/hanan/Downloads/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_descriptionConfig-version.cmake"
+    "/home/student/students/hanu/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_descriptionConfig.cmake"
+    "/home/student/students/hanu/igvc_2022/controller_ws/build/igvc_self_drive_sim/igvc_self_drive_description/catkin_generated/installspace/igvc_self_drive_descriptionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_description" TYPE FILE FILES "/home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_description" TYPE FILE FILES "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_description" TYPE DIRECTORY FILES
-    "/home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/meshes"
-    "/home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/urdf"
+    "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/meshes"
+    "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_description/urdf"
     REGEX "/[^/]*\\.tar\\.gz$" EXCLUDE)
 endif()
 

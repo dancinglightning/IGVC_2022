@@ -25,10 +25,10 @@ import matplotlib.pyplot as plt
 # import matplotlib as mpl
 import pickle
 sys.path.append('../../')
-
+    
 
 class MPController():
-    def __init__(self, N_ref = 100):
+    def __init__(self, N_ref = 30):
 
 	rospy.init_node('control_node')    	
 	#Model and MPC variables
@@ -40,7 +40,7 @@ class MPController():
         self.Cy = 0.1           # Tyre stiffness constant
         self.t_s = 0.1          # sample time
         self.N = 70             # Horizon
-        self.N_ref = N_ref    # control iterations
+        self.N_ref = N_ref      # control iterations
 
 
         #self.x_z = interpolant('x_z', "bspline", [[1,2,3,4,5,6]], [1,2,3,4,5,6])
@@ -54,8 +54,13 @@ class MPController():
         self.c = 1
         self.packed = [self.velocities, self.c]
         self.x_initial = vertcat([0],[0],[0],[1.5],[0],[0],[0])       # intial state vector
-	self.x_0 = self.x_initial 
-	self.steer = 0	        # variable to store the curent state vector 
+    	self.x_0 = self.x_initial 
+    	self.steer = 0	        # variable to store the curent state vector 
+        self.z_sim = 0
+
+    	self.conversion_matrix_x = np.zeros((8,1))   #Scary Point
+    	self.conversion_matrix_y = np.zeros((8,1))
+    	self.conversion_matrix_v = np.zeros((8,1))
 
 	    #MPC  variables
         self.model = self.mpc_model()
@@ -64,7 +69,7 @@ class MPController():
         self.estimator = do_mpc.estimator.StateFeedback(self.model)
 
 	    # ROS variables
-        # self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
+        self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)
         self.steer_pub = rospy.Publisher('/steer_cmd', Float64, queue_size=10)
         self.gear_pub = rospy.Publisher('/gear_cmd', UInt8, queue_size=10)
@@ -75,21 +80,51 @@ class MPController():
         self.steer_sub = rospy.Subscriber("/current_steer_angle", Float64, self.steer_callback)
 
 
-    def acc_publisher(x):
-	acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
-        rospy.init_node('acc_pub', anonymous=False)
-        rate = rospy.Rate(10) # 10hz
-        rospy.loginfo(x)
-        pub.publish(x)
-        rospy.spin()
 
+        self.simulator.x0 = self.x_initial  
+
+        x_0 = self.simulator.x0.cat.full()
+
+        self.controller.x0 = x_0
+        self.controller.set_initial_guess()
+
+    def linear_regression(self, x, n=0, lamda=0):
+        n = len(x)
+        z0 = np.array([1 for i in range(n)])
+        z1 = np.array([i+1 for i in range(n)])
+        z2 = z1**2
+        z3 = z1**3
+        z4 = z1**4
+        z5 = z1**5
+        z6 = z1**6
+        z7 = z1**7
+        z = np.vstack((z0, z1, z2, z3, z4, z5, z6, z7)).T
+        return np.dot(np.linalg.pinv(np.dot(z.T,z)),(np.dot(z.T,x)))
+
+    def lin_val_x(self, z):
+        self.conversion_matrix_x = self.linear_regression(z)
+
+    def lin_val_y(self, z):
+        self.conversion_matrix_y = self.linear_regression(z)
+
+    def lin_val_v(self, z):
+        self.conversion_matrix_v = self.linear_regression(z)
 
     def x_z(self,z):
-	return 0
+        c = self.conversion_matrix_x
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
     def y_z(self,z):
-	return z
+        c = self.conversion_matrix_y
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
     def v_z(self,z):
-	return 1
+        c = self.conversion_matrix_v
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
 
     def mpc_model(self):
         # Obtain an instance of the do-mpc model class
@@ -120,8 +155,8 @@ class MPController():
         # Set right-hand-side of ODE for all introduced states (_x).
         # Names are inherited from the state definition.
         
-        Fyf = self.Cy * (delta - (self.La * phi) / v)
-        Fyr = (self.Cy * self.Lb * phi) / v
+        Fyf = self.Cy * (delta - (self.La * phi) / (v+1e-8))
+        Fyr = (self.Cy * self.Lb * phi) / (v+1e-8)
         
         equations = vertcat( v * np.sin(theta), 
 			               v * np.cos(theta),
@@ -176,15 +211,16 @@ class MPController():
         z = model.x['z']
 		    
         # Objective function:
-        cost = (xc - self.x_z(z)) ** 2 + (yc - self.y_z(z)) ** 2 + (model.x['v'] - self.v_z(z)) ** 2
 
+        # cost = (xc-1) ** 2 + (yc-10) ** 2 + (model.x['v']-1) ** 2
+        cost = (xc - self.x_z(z)) ** 2 + (yc - self.y_z(z)) ** 2 + (model.x['v'] - self.v_z(z)) ** 2
 
         mterm = cost # terminal cost
         lterm = cost # stage cost
 
         mpc.set_objective(mterm=mterm, lterm=lterm)
-        mpc.set_rterm(a = 0.00005)
-        mpc.set_rterm(w = 0.00001) # Scaling for quad. cost.
+        mpc.set_rterm(a=0.00005)
+        mpc.set_rterm(w=0.00001) # Scaling for quad. cost.
 
         ####################### State and input bounds #######################3
 
@@ -257,7 +293,7 @@ class MPController():
 
             # publish the steering angle and acceleration and brake values 
             if u0[0][0]>=0:
-                acc_publisher(u0[0][0]/6)
+                self.acc_pub.publish(u0[0][0]/6)
             else:
                 force = u0[0][0] * self.m
                 torque = -0.32 * force
@@ -275,7 +311,6 @@ class MPController():
     def path_callback(self, path):
 	
         path_repeat = False
-	print("Fuckity fuck")
         
 	    ##################################
 	    # Step1 - Obtaining the path points
@@ -284,12 +319,12 @@ class MPController():
         l = len(path.poses)                                                   # length of the path
         points = np.zeros((l,2))                                              # array for storing the path points
 	    # check for repetition on the path. 
-        if len(self.path_points) > 0:                                            # Prevents check the first time this fucntion is called
-            if self.path_points[0][0] == path.poses[0].pose.position.y:            # checks the y-coordinate of path
-                print("### repetition detected ###")
-                path_repeat = True
-                self.path_sub.unregister()                                       # unsubscribe the topic
-                print("####################################### path unregistered #######################################")
+        # if len(self.path_points) > 0:                                            # Prevents check the first time this fucntion is called
+        #     if self.path_points[0][0] == path.poses[0].pose.position.y:            # checks the y-coordinate of path
+        #         print("### repetition detected ###")
+        #         path_repeat = True
+        #         self.path_sub.unregister()                                       # unsubscribe the topic
+        #         print("####################################### path unregistered #######################################")
 
 	    # after check passed
         if not path_repeat:    
@@ -303,43 +338,30 @@ class MPController():
 	    # Step2 - Interplotate
 	    ###########################
 
-	    #Cubic Spline interpolation using the indices as the variable.
+	    #interpolation using the indices as the variable.
+	    self.lin_val_x(points[:,1])
+        self.lin_val_y(points[:,0])
 
-        points = range(0, l)
-	    # x_z = interp.CubicSpline(z, points[1])
-	    # y_z = interp.CubicSpline(z, points[0])
-
-        # x_z = interpolant('x_z', "bspline", [points], points[1,:])
-        # y_z = interpolant('y_z', "bspline", [points], points[0,:])
-
-	    ####################################
-	    # Step3 - Update the function handles
-	    ####################################
-
-        # self.set_path(x_z, y_z)
-
-	print('\n\n################################################    ' + str(k) + '    #########################################\n\n')
-    
-	              # shifted from bottom to top, because we need to make the subsc call first		
-
+        
         u0 = self.controller.make_step(self.x_0)     	    	   # Determine optimal control inputs using the inital state given
 
         # publish the steering angle and acceleration and brake values 
         if u0[0][0]>=0:
-	   acc_publisher(u0[0][0]/6)
+	       self.acc_pub.publish(u0[0][0]/6)
         else:
-	   force = u0[0][0] * self.m
-	   torque = -0.32 * force
-	   self.brake_pub.publish(torque)
+    	   force = u0[0][0] * self.m
+    	   torque = -0.32 * force
+    	   self.brake_pub.publish(torque)
     
-           steer += u0[1][0] * self.t_s
-           self.steer_pub.publish(steer*17)
-           self.gear_pub.publish(1)
+        self.steer += u0[1][0] * self.t_s
+        self.steer_pub.publish(self.steer*17)
+        self.gear_pub.publish(1)
 
         y_n = self.simulator.make_step(u0)					# Simulate the next step using the control inputs
-        # x_0 = self.estimator.make_step(y_n)					# estimate the next state
+        # x_0 = self.estimator.make_step(y_n)					# estimate the next state\
 
-        # plt.plot(x,y)
+        self.z_sim = y_n[5]
+
 
 
     def vel_callback(self, vel_arr):
@@ -358,11 +380,8 @@ class MPController():
 	    # Step2 - Interplotate
 	    ###########################
 
-	    #Cubic Spline interpolation using the indices as the variable.
-
-        z = range(0,l)
-	    # v_z = interp.CubicSpline(z, vel)
-        # v_z = interpolant('v_z', "bspline", [z], vel)
+	    # interpolation using the indices as the variable.
+	    self.lin_val_v(vel)
 
 
 	    ####################################
@@ -421,24 +440,19 @@ class MPController():
         return self.state
 
 	# these set functions are used to assign the class private function handles to the calulated ones
-    def set_path(self, x_z, y_z):
-        self.x_z = x_z
-        self.y_z = y_z
-
-    def set_vel(self, v_z):
-        self.v_z = v_z
 
     def set_steer(self, steer):
-	self.steer = steer
-        self.x_0[5] = steer
+        self.steer = steer.data
+        # self.x_0[5] = steer
 
     def set_state(self, pose_arr, twist_arr):
-        self.x_0 = vertcat(   pose_arr[0],
-                              pose_arr[1],
-                              np.sqrt(twist_arr[0]**2 + twist_arr[1]**2),
-                              np.arctan(twist_arr[1]/(twist_arr[0]+(1e-50))),
-                              float(twist_arr[2]),
-                              self.steer
+        self.x_0 = vertcat(   [pose_arr[0]],
+                              [pose_arr[1]],
+                              [float(np.sqrt(twist_arr[0]**2 + twist_arr[1]**2))],
+                              [float(np.arctan(twist_arr[1]/(twist_arr[0]+(1e-50))))],
+                              [float(twist_arr[2])],
+                              [self.steer],
+                              [self.z_sim]
                             )
  ##############################################
 

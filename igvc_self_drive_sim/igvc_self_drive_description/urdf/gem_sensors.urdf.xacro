@@ -6,14 +6,38 @@
   <!-- Camera -->
   <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/camera.urdf.xacro" />
   <xacro:camera_sim name="camera_front" parent="base_footprint" >
-    <origin xyz="1.75 0 2.1" rpy="0 0.55 0" />
+    <origin xyz="1.75 0 2.1" rpy="0 0 0" />
+  </xacro:camera_sim>
+
+    <!-- Camera Back-->
+  <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/camera_back.urdf.xacro" />
+  <xacro:camera_sim name="camera_back" parent="base_footprint" >
+    <origin xyz="0.25 0 2.1" rpy="0 0 3.1415926" />
+  </xacro:camera_sim>
+
+    <!-- Camera Left-->
+  <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/camera_left.urdf.xacro" />
+  <xacro:camera_sim name="camera_left" parent="base_footprint" >
+    <origin xyz="1.65 0.56 2.1" rpy="0.0 0 0.6" />
+  </xacro:camera_sim>
+
+    <!-- Camera Right-->
+  <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/camera_right.urdf.xacro" />
+  <xacro:camera_sim name="camera_right" parent="base_footprint" >
+    <origin xyz="1.65 -0.56 2.1" rpy="0. 0 -0.6" />
   </xacro:camera_sim>
 
   <!-- LIDAR -->
-  <xacro:include filename="$(find hector_sensors_description)/urdf/hokuyo_utm30lx.urdf.xacro" />
+<!--   <xacro:include filename="$(find hector_sensors_description)/urdf/hokuyo_utm30lx.urdf.xacro" />
   <xacro:hokuyo_utm30lx name="laser" parent="base_footprint" ros_topic="scan" update_rate="40" ray_count="720" min_angle="-90" max_angle="90" >
     <origin xyz="2.75 0 0.85" rpy="0 0 0" />
-  </xacro:hokuyo_utm30lx>
+  </xacro:hokuyo_utm30lx> -->
+
+  <!-- IMU -->
+  <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/imu.urdf.xacro" />
+  <xacro:imu name="imu" parent="base_footprint" >
+    <origin xyz="1.20 0 1.2" rpy="0 0 0" />
+  </xacro:imu>
 
   <!-- GPS -->
   <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/gps.urdf.xacro" />
@@ -21,7 +45,13 @@
     <origin xyz="0.8 0 2.35" rpy="0 0 0" />
   </xacro:gps>
 
-  <!-- Sonar sensors -->
+  <!--3D LIDAR-->
+  <xacro:include filename="$(find igvc_self_drive_description)/urdf/sensors/OS1-64.urdf.xacro"/>
+  <xacro:OS1-64 parent="base_footprint" hz="10" samples="220">
+    <origin xyz="1.30 0 2.50" rpy="0 0 0" />
+  </xacro:OS1-64>
+
+  <!-- Sonar sensors
   <xacro:include filename="$(find hector_sensors_description)/urdf/sonar_sensor.urdf.xacro" />
 
   <xacro:sonar_sensor name="front_center" parent="base_footprint" ros_topic="sonar/front_center" update_rate="20" min_range="0.1" max_range="2" field_of_view="0.17" ray_count="3" >
@@ -62,6 +92,6 @@
 
   <xacro:sonar_sensor name="right_side_rear" parent="base_footprint" ros_topic="sonar/right_side_rear" update_rate="20" min_range="0.1" max_range="2" field_of_view="0.17" ray_count="3" >
     <origin xyz="0 -0.71 0.71" rpy="0 0 ${-M_PI/2}" />
-  </xacro:sonar_sensor>
+  </xacro:sonar_sensor> -->
 
 </robot>

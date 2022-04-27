@@ -67,14 +67,14 @@ set(astar_ros_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(astar_ros_SOURCE_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/src/astar_ros)
-  set(astar_ros_DEVEL_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/devel)
+  set(astar_ros_SOURCE_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/src/astar_ros)
+  set(astar_ros_DEVEL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/devel)
   set(astar_ros_INSTALL_PREFIX "")
   set(astar_ros_PREFIX ${astar_ros_DEVEL_PREFIX})
 else()
   set(astar_ros_SOURCE_PREFIX "")
   set(astar_ros_DEVEL_PREFIX "")
-  set(astar_ros_INSTALL_PREFIX /home/hanan/Downloads/igvc_2022/controller_ws/install)
+  set(astar_ros_INSTALL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/install)
   set(astar_ros_PREFIX ${astar_ros_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/hanan/Downloads/igvc_2022/controller_ws/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/students/hanu/igvc_2022/controller_ws/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

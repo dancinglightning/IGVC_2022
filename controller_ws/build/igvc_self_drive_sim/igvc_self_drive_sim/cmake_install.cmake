@@ -1,8 +1,8 @@
-# Install script for directory: /home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_sim
+# Install script for directory: /home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_sim
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/hanan/Downloads/igvc_2022/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/student/students/hanu/igvc_2022/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,7 +37,12 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_sim" TYPE FILE FILES "/home/hanan/Downloads/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_sim/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/igvc_self_drive_sim" TYPE FILE FILES "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/igvc_self_drive_sim/package.xml")
 endif()
 

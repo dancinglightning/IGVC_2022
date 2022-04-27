@@ -18,7 +18,7 @@
     <joint name="${name}_optical" type="fixed" >
       <parent link="${name}_optical" />
       <child link="${name}" />
-      <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
     </joint>
 
     <joint name="${name}_joint" type="fixed" >
@@ -34,15 +34,15 @@
         <update_rate>30.0</update_rate>
 
         <camera name="cam">
-          <horizontal_fov>1.04</horizontal_fov>
+          <horizontal_fov>1.87</horizontal_fov>
           <image>
-            <width>640</width>
-            <height>480</height>
+            <width>1280</width>
+            <height>720</height>
             <format>R8G8B8</format>
           </image>
           <clip>
-            <near>0.02</near>
-            <far>300</far>
+            <near>0.05</near>
+            <far>60</far>
           </clip>
           <noise>
             <type>gaussian</type>
@@ -50,7 +50,7 @@
                  That pixel's noise value is added to each of its color
                  channels, which at that point lie in the range [0,1]. -->
             <mean>0.0</mean>
-            <stddev>0.007</stddev>
+            <stddev>0.0</stddev>
           </noise>
         </camera>
 

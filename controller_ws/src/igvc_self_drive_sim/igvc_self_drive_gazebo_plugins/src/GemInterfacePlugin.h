@@ -61,6 +61,9 @@ class GemInterfacePlugin : public ModelPlugin
     ros::Timer tf_timer_;
     tf::TransformBroadcaster tf_broadcaster_;
 
+    //teju added 
+    ros::Publisher pub_current_steering_angle_;
+
     physics::ModelPtr model_;
     geometry_msgs::Twist twist_;
     bool rollover_;
@@ -102,6 +105,9 @@ class GemInterfacePlugin : public ModelPlugin
     geometry_msgs::Twist cmd_vel_;
     ros::Time cmd_vel_stamp_;
     double int_throttle_;
+
+    //teju added
+    std_msgs::Float64 teju_current_steer_angle_;
 };
 
 GZ_REGISTER_MODEL_PLUGIN(GemInterfacePlugin)

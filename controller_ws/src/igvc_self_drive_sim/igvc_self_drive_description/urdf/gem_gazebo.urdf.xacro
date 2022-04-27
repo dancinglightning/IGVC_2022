@@ -27,22 +27,22 @@
     <mu2>0.5</mu2>
   </gazebo>
 
-  <gazebo reference="wheel_fl" >
+  <gazebo reference="link_wheel_fl" >
     <mu1>${wheel_friction}</mu1>
     <mu2>${wheel_friction}</mu2>
   </gazebo>
 
-  <gazebo reference="wheel_fr" >
+  <gazebo reference="link_wheel_fr" >
     <mu1>${wheel_friction}</mu1>
     <mu2>${wheel_friction}</mu2>
   </gazebo>
 
-  <gazebo reference="wheel_rl" >
+  <gazebo reference="link_wheel_rl" >
     <mu1>${wheel_friction}</mu1>
     <mu2>${wheel_friction}</mu2>
   </gazebo>
 
-  <gazebo reference="wheel_rr" >
+  <gazebo reference="link_wheel_rr" >
     <mu1>${wheel_friction}</mu1>
     <mu2>${wheel_friction}</mu2>
   </gazebo>

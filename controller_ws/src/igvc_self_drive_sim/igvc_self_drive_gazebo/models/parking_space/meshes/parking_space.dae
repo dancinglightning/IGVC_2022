@@ -31,7 +31,7 @@
         <technique sid="common">
           <phong>
             <emission>
-              <color sid="emission">0 0 0 1</color>
+              <color sid="emission">1 1 1 1</color>
             </emission>
             <ambient>
               <texture texture="parking_space_texture_png-sampler" texcoord="UVMap"/>
@@ -40,10 +40,10 @@
               <texture texture="parking_space_texture_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
-              <color sid="specular">0.5 0.5 0.5 1</color>
+              <color sid="specular">1 1 1 1</color>
             </specular>
             <shininess>
-              <float sid="shininess">50</float>
+              <float sid="shininess">100</float>
             </shininess>
             <reflective>
               <texture texture="parking_space_texture_png-sampler" texcoord="UVMap"/>

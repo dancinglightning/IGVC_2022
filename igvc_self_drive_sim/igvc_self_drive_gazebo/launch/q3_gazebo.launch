@@ -2,7 +2,7 @@
 <launch>
 
   <include file="$(find igvc_self_drive_gazebo)/launch/load_task_world.launch" >
-    <arg name="auto_camera" value="true" />
+    <arg name="auto_camera" value="false" />
   </include>
 
   <include file="$(find igvc_self_drive_gazebo)/launch/spawn_gem.launch" >

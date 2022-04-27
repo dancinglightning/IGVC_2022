@@ -1,4 +1,4 @@
-prefix=/home/hanan/Downloads/igvc_2022/controller_ws/install
+prefix=/home/student/students/hanu/igvc_2022/controller_ws/install
 
 Name: velocity_plan
 Description: Description of velocity_plan

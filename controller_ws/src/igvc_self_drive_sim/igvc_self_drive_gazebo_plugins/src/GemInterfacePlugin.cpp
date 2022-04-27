@@ -5,14 +5,17 @@ namespace gazebo
 
 GemInterfacePlugin::GemInterfacePlugin()
 {
-  target_angle_ = 0.0;
-  current_steer_angle_ = 0.0;
-  brake_cmd_ = 0.0;
-  throttle_cmd_ = 0.0;
+  target_angle_ = 0.0; // desired vehicle ka steering angle
+  current_steer_angle_ = 0.0; // current steering angle
+  brake_cmd_ = 0.0; // torque value provided btw 0 and 1000
+  throttle_cmd_ = 0.0; // normalized value provided btw 0 and 1
   rollover_ = false;
   gear_state_.data = GEAR_FORWARD;
   pub_tf_ = false;
   twist_control_mode_ = false;
+
+  //teju added
+  teju_current_steer_angle_.data = current_steer_angle_;
 }
 
 void GemInterfacePlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
@@ -57,6 +60,10 @@ void GemInterfacePlugin::Load(physics::ModelPtr model, sdf::ElementPtr sdf)
   pub_twist_ = n_->advertise<geometry_msgs::TwistStamped>("twist", 1);
   pub_gear_state_ = n_->advertise<std_msgs::UInt8>("gear_state", 1, true);
   pub_gear_state_.publish(gear_state_);
+
+  //teju added
+  pub_current_steering_angle_ = n_->advertise<std_msgs::Float64>("current_steer_angle",1);
+  pub_current_steering_angle_.publish(teju_current_steer_angle_);
 
   twist_timer_ = n_->createTimer(ros::Duration(0.02), &GemInterfacePlugin::twistTimerCallback, this);
   if (pub_tf_) {
@@ -246,7 +253,9 @@ void GemInterfacePlugin::steeringUpdate(const common::UpdateInfo& info)
   } else if ((target_angle_ - current_steer_angle_) < -max_inc) {
     current_steer_angle_ -= max_inc;
   }
-
+  //teju added
+  teju_current_steer_angle_.data = current_steer_angle_;
+  pub_current_steering_angle_.publish(teju_current_steer_angle_);
   // Compute Ackermann steering angles for each wheel
   double t_alph = tan(current_steer_angle_);
   double left_steer = atan(WHEELBASE * t_alph / (WHEELBASE - 0.5 * TRACK_WIDTH * t_alph));

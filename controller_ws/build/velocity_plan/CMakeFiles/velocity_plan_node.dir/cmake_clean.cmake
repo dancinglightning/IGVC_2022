@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
+  "/home/student/students/hanu/igvc_2022/controller_ws/devel/lib/velocity_plan/velocity_plan_node"
+  "/home/student/students/hanu/igvc_2022/controller_ws/devel/lib/velocity_plan/velocity_plan_node.pdb"
   "CMakeFiles/velocity_plan_node.dir/src/vel_arr.cpp.o"
-  "/home/hanan/Downloads/igvc_2022/controller_ws/devel/lib/velocity_plan/velocity_plan_node.pdb"
-  "/home/hanan/Downloads/igvc_2022/controller_ws/devel/lib/velocity_plan/velocity_plan_node"
+  "CMakeFiles/velocity_plan_node.dir/src/vel_arr.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
