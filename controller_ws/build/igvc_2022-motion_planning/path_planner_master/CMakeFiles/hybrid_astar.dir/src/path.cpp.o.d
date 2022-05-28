@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/path.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/path.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/path.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/path.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/path.h \
  /usr/include/c++/7/iostream \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -996,6 +996,6 @@ igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/pa
  /opt/ros/melodic/include/visualization_msgs/MarkerArray.h \
  /opt/ros/melodic/include/visualization_msgs/Marker.h \
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h

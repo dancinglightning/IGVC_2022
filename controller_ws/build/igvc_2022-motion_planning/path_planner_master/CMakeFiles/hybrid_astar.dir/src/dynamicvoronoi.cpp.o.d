@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/dynamicvoronoi.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/dynamicvoronoi.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/dynamicvoronoi.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dynamicvoronoi.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dynamicvoronoi.h \
  /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -98,12 +98,12 @@ igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/dy
  /usr/include/c++/7/backward/binders.h \
  /usr/include/c++/7/bits/stl_queue.h \
  /usr/include/c++/7/bits/uses_allocator.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/bucketedqueue.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/bucketedqueue.h \
  /usr/include/c++/7/set /usr/include/c++/7/bits/stl_tree.h \
  /usr/include/c++/7/ext/aligned_buffer.h \
  /usr/include/c++/7/bits/stl_set.h /usr/include/c++/7/bits/stl_multiset.h \
  /usr/include/assert.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/point.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/point.h \
  /usr/include/c++/7/math.h /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

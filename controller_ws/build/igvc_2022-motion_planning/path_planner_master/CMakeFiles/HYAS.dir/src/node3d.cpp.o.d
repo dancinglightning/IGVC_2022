@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/HYAS.dir/src/node3d.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/node3d.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/node3d.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
  /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -54,8 +54,8 @@ igvc_2022-motion_planning/path_planner_master/CMakeFiles/HYAS.dir/src/node3d.cpp
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h \
  /usr/include/c++/7/algorithm /usr/include/c++/7/utility \
  /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/bits/stl_pair.h \
  /usr/include/c++/7/bits/move.h /usr/include/c++/7/bits/concept_check.h \

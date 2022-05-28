@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/CMakeFiles/gazebo_ros_lidar.dir/src/GazeboRosLidar.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/src/GazeboRosLidar.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/src/GazeboRosLidar.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/include/lidar_gazebo_plugins/GazeboRosLidar.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/include/lidar_gazebo_plugins/GazeboRosLidar.h \
  /opt/ros/melodic/include/ros/ros.h /opt/ros/melodic/include/ros/time.h \
  /opt/ros/melodic/include/ros/platform.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/cstdlib \

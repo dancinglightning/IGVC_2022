@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/pointcloud_to_laserscan/laserscan_to_pointcloud_node"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/pointcloud_to_laserscan/laserscan_to_pointcloud_node.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/pointcloud_to_laserscan/laserscan_to_pointcloud_node"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/pointcloud_to_laserscan/laserscan_to_pointcloud_node.pdb"
   "CMakeFiles/laserscan_to_pointcloud_node.dir/src/laserscan_to_pointcloud_node.cpp.o"
   "CMakeFiles/laserscan_to_pointcloud_node.dir/src/laserscan_to_pointcloud_node.cpp.o.d"
 )

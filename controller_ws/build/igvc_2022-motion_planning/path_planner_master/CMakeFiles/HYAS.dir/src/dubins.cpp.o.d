@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/HYAS.dir/src/dubins.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/dubins.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/dubins.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dubins.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dubins.h \
  /usr/include/c++/7/math.h /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \

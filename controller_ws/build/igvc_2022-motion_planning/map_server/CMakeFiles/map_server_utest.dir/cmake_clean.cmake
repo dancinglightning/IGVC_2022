@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/map_server/map_server_utest"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/map_server/map_server_utest.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/map_server/map_server_utest"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/map_server/map_server_utest.pdb"
   "CMakeFiles/map_server_utest.dir/test/test_constants.cpp.o"
   "CMakeFiles/map_server_utest.dir/test/test_constants.cpp.o.d"
   "CMakeFiles/map_server_utest.dir/test/utest.cpp.o"

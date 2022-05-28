@@ -67,14 +67,14 @@ set(igvc_self_drive_gazebo_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(igvc_self_drive_gazebo_SOURCE_PREFIX /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo)
-  set(igvc_self_drive_gazebo_DEVEL_PREFIX /home/student/Documents/igvc_2022/controller_ws/devel)
+  set(igvc_self_drive_gazebo_SOURCE_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo)
+  set(igvc_self_drive_gazebo_DEVEL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/devel)
   set(igvc_self_drive_gazebo_INSTALL_PREFIX "")
   set(igvc_self_drive_gazebo_PREFIX ${igvc_self_drive_gazebo_DEVEL_PREFIX})
 else()
   set(igvc_self_drive_gazebo_SOURCE_PREFIX "")
   set(igvc_self_drive_gazebo_DEVEL_PREFIX "")
-  set(igvc_self_drive_gazebo_INSTALL_PREFIX /home/student/Documents/igvc_2022/controller_ws/install)
+  set(igvc_self_drive_gazebo_INSTALL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/install)
   set(igvc_self_drive_gazebo_PREFIX ${igvc_self_drive_gazebo_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/Documents/igvc_2022/controller_ws/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/Documents/IGVC_2022_Controls/controller_ws/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

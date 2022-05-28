@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libigvc_self_drive_gazebo_plugins_vehicle.pdb"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libigvc_self_drive_gazebo_plugins_vehicle.so"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libigvc_self_drive_gazebo_plugins_vehicle.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libigvc_self_drive_gazebo_plugins_vehicle.so"
   "CMakeFiles/igvc_self_drive_gazebo_plugins_vehicle.dir/src/GemInterfacePlugin.cpp.o"
   "CMakeFiles/igvc_self_drive_gazebo_plugins_vehicle.dir/src/GemInterfacePlugin.cpp.o.d"
 )

@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/collisiondetection.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/collisiondetection.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/collisiondetection.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/collisiondetection.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/collisiondetection.h \
  /opt/ros/melodic/include/nav_msgs/OccupancyGrid.h \
  /usr/include/c++/7/string \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -711,9 +711,9 @@ igvc_2022-motion_planning/path_planner_master/CMakeFiles/hybrid_astar.dir/src/co
  /opt/ros/melodic/include/geometry_msgs/Pose.h \
  /opt/ros/melodic/include/geometry_msgs/Point.h \
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/lookup.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dubins.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node2d.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/constants.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/lookup.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/dubins.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node2d.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/node3d.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/helper.h

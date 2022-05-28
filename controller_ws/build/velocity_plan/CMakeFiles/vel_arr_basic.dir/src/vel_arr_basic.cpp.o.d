@@ -1,5 +1,5 @@
 velocity_plan/CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/velocity_plan/src/vel_arr_basic.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/velocity_plan/src/vel_arr_basic.cpp \
  /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h \
  /usr/include/c++/7/cassert \

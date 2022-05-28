@@ -1,5 +1,5 @@
 igvc_2022-motion_planning/map_server/CMakeFiles/map_server.dir/src/main.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/map_server/src/main.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/map_server/src/main.cpp \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -970,7 +970,7 @@ igvc_2022-motion_planning/map_server/CMakeFiles/map_server.dir/src/main.cpp.o: \
  /opt/ros/melodic/include/ros/param.h \
  /opt/ros/melodic/include/ros/topic.h \
  /opt/ros/melodic/include/ros/node_handle.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/map_server/include/map_server/image_loader.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/map_server/include/map_server/image_loader.h \
  /opt/ros/melodic/include/nav_msgs/GetMap.h \
  /opt/ros/melodic/include/nav_msgs/GetMapRequest.h \
  /opt/ros/melodic/include/ros/message_operations.h \

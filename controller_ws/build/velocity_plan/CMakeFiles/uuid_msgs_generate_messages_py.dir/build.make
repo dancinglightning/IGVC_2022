@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/student/Documents/igvc_2022/controller_ws/src
+CMAKE_SOURCE_DIR = /home/student/Documents/IGVC_2022_Controls/controller_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/student/Documents/igvc_2022/controller_ws/build
+CMAKE_BINARY_DIR = /home/student/Documents/IGVC_2022_Controls/controller_ws/build
 
 # Utility rule file for uuid_msgs_generate_messages_py.
 
@@ -74,10 +74,10 @@ velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/build: uuid_msgs_gen
 .PHONY : velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/build
 
 velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/clean:
-	cd /home/student/Documents/igvc_2022/controller_ws/build/velocity_plan && $(CMAKE_COMMAND) -P CMakeFiles/uuid_msgs_generate_messages_py.dir/cmake_clean.cmake
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build/velocity_plan && $(CMAKE_COMMAND) -P CMakeFiles/uuid_msgs_generate_messages_py.dir/cmake_clean.cmake
 .PHONY : velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/clean
 
 velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/depend:
-	cd /home/student/Documents/igvc_2022/controller_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/Documents/igvc_2022/controller_ws/src /home/student/Documents/igvc_2022/controller_ws/src/velocity_plan /home/student/Documents/igvc_2022/controller_ws/build /home/student/Documents/igvc_2022/controller_ws/build/velocity_plan /home/student/Documents/igvc_2022/controller_ws/build/velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/student/Documents/IGVC_2022_Controls/controller_ws/src /home/student/Documents/IGVC_2022_Controls/controller_ws/src/velocity_plan /home/student/Documents/IGVC_2022_Controls/controller_ws/build /home/student/Documents/IGVC_2022_Controls/controller_ws/build/velocity_plan /home/student/Documents/IGVC_2022_Controls/controller_ws/build/velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : velocity_plan/CMakeFiles/uuid_msgs_generate_messages_py.dir/depend
 

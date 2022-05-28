@@ -29,7 +29,7 @@ sys.path.append('../../')
 
 
 class MPController():
-    def __init__(self, N_ref = 30):
+    def __init__(self, N_ref = 1):
    
         #Model and MPC variables
         self.model_type = 'continuous'  
@@ -76,7 +76,7 @@ class MPController():
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)
         self.steer_pub = rospy.Publisher('/steer_cmd', Float64, queue_size=10)
         self.gear_pub = rospy.Publisher('/gear_cmd', UInt8, queue_size=10)
-        self.rate = rospy.Rate(10)
+        self.rate = rospy.Rate(100)
         self.path_sub = rospy.Subscriber("/path", Path, self.path_callback)
         self.vel_sub = rospy.Subscriber("/best_velocity", Float64MultiArray,self.vel_callback)
         self.state_sub = rospy.Subscriber("/gazebo/model_states", ModelStates, self.state_callback)
@@ -275,7 +275,7 @@ class MPController():
 
         # self.controller.set_initial_guess()
         # self.simulator.set_initial_guess()
-        # self.controller.reset_history()
+        self.controller.reset_history()
         # self.simulator.reset_history()
         ###############################################################################################
 
@@ -289,7 +289,6 @@ class MPController():
         # Start the control loop
         for k in range(self.N_ref):
             print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
-
             u0 = self.controller.make_step(x_0)                    # Determine optimal control inputs using the inital state given
 
             # publish the steering angle and acceleration and brake values 
@@ -300,7 +299,7 @@ class MPController():
             #     force = u0[0][0] * self.m
             #     torque = -0.32 * force
             #     self.brake_pub.publish(torque)
-        
+
             self.steer += u0[1][0]
             self.steer_pub.publish(self.steer*17)
             self.gear_pub.publish(0)
@@ -308,8 +307,8 @@ class MPController():
             y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
             x_0 = self.estimator.make_step(y_n)                 # estimate the next state
             print(self.velocities)
-            
-        self.z_sim = y_n[5]
+       
+        # self.z_sim = y_n[5]
 
 
         # plt.plot(x,y)

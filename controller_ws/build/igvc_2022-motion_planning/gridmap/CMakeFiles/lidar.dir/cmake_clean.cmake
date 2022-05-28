@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/gridmap/lidar"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/gridmap/lidar.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/lidar"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/lidar.pdb"
   "CMakeFiles/lidar.dir/src/lidarOccGrid.cpp.o"
   "CMakeFiles/lidar.dir/src/lidarOccGrid.cpp.o.d"
 )

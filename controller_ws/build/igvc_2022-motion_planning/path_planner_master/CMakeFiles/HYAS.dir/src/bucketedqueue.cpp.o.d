@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/path_planner_master/CMakeFiles/HYAS.dir/src/bucketedqueue.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/bucketedqueue.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/src/bucketedqueue.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/bucketedqueue.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/bucketedqueue.h \
  /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -52,7 +52,7 @@ igvc_2022-motion_planning/path_planner_master/CMakeFiles/HYAS.dir/src/bucketedqu
  /usr/include/c++/7/bits/stl_deque.h /usr/include/c++/7/bits/deque.tcc \
  /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_queue.h \
  /usr/include/c++/7/bits/uses_allocator.h /usr/include/assert.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/point.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include/point.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
  /usr/include/limits.h \

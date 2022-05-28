@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libgazebo_ros_lidar.pdb"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libgazebo_ros_lidar.so"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar.so"
   "CMakeFiles/gazebo_ros_lidar.dir/src/GazeboRosLidar.cpp.o"
   "CMakeFiles/gazebo_ros_lidar.dir/src/GazeboRosLidar.cpp.o.d"
 )

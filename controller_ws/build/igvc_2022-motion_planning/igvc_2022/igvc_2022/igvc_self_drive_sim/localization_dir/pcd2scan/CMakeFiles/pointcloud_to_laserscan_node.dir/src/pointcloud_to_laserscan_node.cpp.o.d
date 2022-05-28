@@ -1,5 +1,5 @@
 igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/CMakeFiles/pointcloud_to_laserscan_node.dir/src/pointcloud_to_laserscan_node.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/src/pointcloud_to_laserscan_node.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/src/pointcloud_to_laserscan_node.cpp \
  /usr/include/stdc-predef.h /opt/ros/melodic/include/nodelet/loader.h \
  /usr/include/c++/7/map /usr/include/c++/7/bits/stl_tree.h \
  /usr/include/c++/7/bits/stl_algobase.h \

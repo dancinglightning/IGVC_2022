@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DHYAS_EXPORTS -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"hybrid_astar\"
 
-CXX_INCLUDES = -I/home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp
+CXX_INCLUDES = -I/home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master/include -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp
 
 CXX_FLAGS =  -std=c++11 -Wall -fPIC
 

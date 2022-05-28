@@ -1,7 +1,7 @@
 igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/CMakeFiles/igvc_self_drive_gazebo_plugins_cam.dir/src/GazeboCamControl.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/src/GazeboCamControl.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/src/GazeboCamControl.cpp \
  /usr/include/stdc-predef.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/src/GazeboCamControl.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/src/GazeboCamControl.h \
  /usr/include/gazebo-9/gazebo/common/Plugin.hh /usr/include/unistd.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -2649,7 +2649,7 @@ igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_driv
  /opt/ros/melodic/include/dynamic_reconfigure/Reconfigure.h \
  /opt/ros/melodic/include/dynamic_reconfigure/ReconfigureRequest.h \
  /opt/ros/melodic/include/dynamic_reconfigure/ReconfigureResponse.h \
- /home/student/Documents/igvc_2022/controller_ws/devel/include/igvc_self_drive_gazebo_plugins/GazeboCamConfig.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/devel/include/igvc_self_drive_gazebo_plugins/GazeboCamConfig.h \
  /opt/ros/melodic/include/dynamic_reconfigure/config_tools.h \
  /opt/ros/melodic/include/dynamic_reconfigure/config_init_mutex.h \
  /opt/ros/melodic/include/tf/tf.h \

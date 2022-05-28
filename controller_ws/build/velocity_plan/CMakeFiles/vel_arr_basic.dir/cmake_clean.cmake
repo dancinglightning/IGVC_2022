@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/velocity_plan/vel_arr_basic"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/velocity_plan/vel_arr_basic.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/velocity_plan/vel_arr_basic"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/velocity_plan/vel_arr_basic.pdb"
   "CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o"
   "CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o.d"
 )

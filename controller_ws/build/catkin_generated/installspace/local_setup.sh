@@ -3,7 +3,7 @@
 
 # since this file is sourced either use the provided _CATKIN_SETUP_DIR
 # or fall back to the destination set at configure time
-: ${_CATKIN_SETUP_DIR:=/home/student/Documents/igvc_2022/controller_ws/install}
+: ${_CATKIN_SETUP_DIR:=/home/student/Documents/IGVC_2022_Controls/controller_ws/install}
 CATKIN_SETUP_UTIL_ARGS="--extend --local"
 . "$_CATKIN_SETUP_DIR/setup.sh"
 unset CATKIN_SETUP_UTIL_ARGS

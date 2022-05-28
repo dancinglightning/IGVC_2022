@@ -1,5 +1,5 @@
 igvc_2022-motion_planning/map_server/CMakeFiles/map_server_image_loader.dir/src/image_loader.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/map_server/src/image_loader.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/map_server/src/image_loader.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/7/cstring \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -132,7 +132,7 @@ igvc_2022-motion_planning/map_server/CMakeFiles/map_server_image_loader.dir/src/
  /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
  /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
  /usr/include/SDL/SDL_version.h \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/map_server/include/map_server/image_loader.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/map_server/include/map_server/image_loader.h \
  /opt/ros/melodic/include/nav_msgs/GetMap.h \
  /opt/ros/melodic/include/ros/service_traits.h \
  /usr/include/boost/type_traits/remove_reference.hpp \

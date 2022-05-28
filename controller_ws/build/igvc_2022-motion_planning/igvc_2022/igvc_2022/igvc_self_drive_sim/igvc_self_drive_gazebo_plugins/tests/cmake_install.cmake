@@ -1,8 +1,8 @@
-# Install script for directory: /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/tests
+# Install script for directory: /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/igvc_self_drive_gazebo_plugins/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/student/Documents/igvc_2022/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/student/Documents/IGVC_2022_Controls/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

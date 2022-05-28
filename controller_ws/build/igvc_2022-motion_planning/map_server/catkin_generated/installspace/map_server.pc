@@ -1,4 +1,4 @@
-prefix=/home/student/Documents/igvc_2022/controller_ws/install
+prefix=/home/student/Documents/IGVC_2022_Controls/controller_ws/install
 
 Name: map_server
 Description: Description of map_server

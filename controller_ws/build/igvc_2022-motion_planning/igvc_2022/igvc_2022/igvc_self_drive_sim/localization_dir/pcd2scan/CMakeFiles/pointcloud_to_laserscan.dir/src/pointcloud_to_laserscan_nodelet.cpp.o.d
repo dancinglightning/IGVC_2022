@@ -1,5 +1,5 @@
 igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/CMakeFiles/pointcloud_to_laserscan.dir/src/pointcloud_to_laserscan_nodelet.cpp.o: \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/src/pointcloud_to_laserscan_nodelet.cpp \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/src/pointcloud_to_laserscan_nodelet.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/7/limits \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -603,7 +603,7 @@ igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_d
  /opt/ros/melodic/include/class_loader/meta_object.hpp \
  /opt/ros/melodic/include/class_loader/visibility_control.hpp \
  /opt/ros/melodic/include/class_loader/register_macro.hpp \
- /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/include/pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet.h \
+ /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/include/pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet.h \
  /usr/include/boost/thread/mutex.hpp \
  /usr/include/boost/thread/pthread/mutex.hpp \
  /usr/include/boost/core/ignore_unused.hpp \

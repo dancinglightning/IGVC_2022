@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libHYAS.pdb"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/libHYAS.so"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libHYAS.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libHYAS.so"
   "CMakeFiles/HYAS.dir/src/algorithm.cpp.o"
   "CMakeFiles/HYAS.dir/src/algorithm.cpp.o.d"
   "CMakeFiles/HYAS.dir/src/bucketedqueue.cpp.o"

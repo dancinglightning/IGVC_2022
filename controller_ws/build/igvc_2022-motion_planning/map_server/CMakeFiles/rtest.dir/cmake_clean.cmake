@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/map_server/rtest"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/map_server/rtest.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/map_server/rtest"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/map_server/rtest.pdb"
   "CMakeFiles/rtest.dir/test/rtest.cpp.o"
   "CMakeFiles/rtest.dir/test/rtest.cpp.o.d"
   "CMakeFiles/rtest.dir/test/test_constants.cpp.o"

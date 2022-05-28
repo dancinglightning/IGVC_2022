@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/hybrid_astar/hybrid_astar"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/hybrid_astar/hybrid_astar.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/hybrid_astar/hybrid_astar"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/hybrid_astar/hybrid_astar.pdb"
   "CMakeFiles/hybrid_astar.dir/src/algorithm.cpp.o"
   "CMakeFiles/hybrid_astar.dir/src/algorithm.cpp.o.d"
   "CMakeFiles/hybrid_astar.dir/src/bucketedqueue.cpp.o"

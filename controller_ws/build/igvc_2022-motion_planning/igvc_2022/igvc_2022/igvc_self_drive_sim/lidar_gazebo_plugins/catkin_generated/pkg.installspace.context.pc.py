@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include;/usr/include;/usr/include/g
 PROJECT_CATKIN_DEPENDS = "roscpp;sensor_msgs;gazebo_ros".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lgazebo_ros_lidar;-lgazebo_ros_lidar_gpu".split(';') if "-lgazebo_ros_lidar;-lgazebo_ros_lidar_gpu" != "" else []
 PROJECT_NAME = "lidar_gazebo_plugins"
-PROJECT_SPACE_DIR = "/home/student/Documents/igvc_2022/controller_ws/install"
+PROJECT_SPACE_DIR = "/home/student/Documents/IGVC_2022_Controls/controller_ws/install"
 PROJECT_VERSION = "1.0.8"

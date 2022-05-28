@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/gridmap/fusion"
-  "/home/student/Documents/igvc_2022/controller_ws/devel/lib/gridmap/fusion.pdb"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion.pdb"
   "CMakeFiles/fusion.dir/src/fusion.cpp.o"
   "CMakeFiles/fusion.dir/src/fusion.cpp.o.d"
 )

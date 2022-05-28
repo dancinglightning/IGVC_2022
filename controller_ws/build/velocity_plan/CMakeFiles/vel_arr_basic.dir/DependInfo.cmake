@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/student/Documents/igvc_2022/controller_ws/src/velocity_plan/src/vel_arr_basic.cpp" "velocity_plan/CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o" "gcc" "velocity_plan/CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o.d"
+  "/home/student/Documents/IGVC_2022_Controls/controller_ws/src/velocity_plan/src/vel_arr_basic.cpp" "velocity_plan/CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o" "gcc" "velocity_plan/CMakeFiles/vel_arr_basic.dir/src/vel_arr_basic.cpp.o.d"
   )
 
 # Targets to which this target links.
