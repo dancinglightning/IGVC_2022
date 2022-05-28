@@ -74,7 +74,7 @@ class MPController():
         # ROS variables
         self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)
-        self.steer_pub = rospy.Publisher('/steer_cmd', Float64, queue_size=10)
+        self.steer_pub = rospy.Publisher('/steering_cmd', Float64, queue_size=10)
         self.gear_pub = rospy.Publisher('/gear_cmd', UInt8, queue_size=10)
         self.rate = rospy.Rate(100)
         self.path_sub = rospy.Subscriber("/path", Path, self.path_callback)
