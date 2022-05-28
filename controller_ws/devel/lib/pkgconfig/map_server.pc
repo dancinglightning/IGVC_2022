@@ -1,0 +1,8 @@
+prefix=/home/student/Documents/igvc_2022/controller_ws/devel
+
+Name: map_server
+Description: Description of map_server
+Version: 1.13.1
+Cflags: -I/home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/map_server/include
+Libs: -L${prefix}/lib -lmap_server_image_loader
+Requires: roscpp tf nav_msgs

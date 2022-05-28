@@ -1,0 +1,16 @@
+<launch>
+<node name="SpartonCompassIMU" pkg="sparton_main" type="SpartonCompassIMU.py" respawn="true" />
+<node name="nmea_serial_driver" pkg="nmea_navsat_driver" type="nmea_serial_driver" respawn="true"/>
+<node name="LMS1xx_node" pkg="lms1xx" type="LMS1xx_node" respawn="true"/>
+<node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" respawn="true"/>
+<node name="lane_ends" pkg="goal_set" type="lane_ends" respawn="true"/>
+<node name="local_gridmap_node" pkg="local_gridmap" type="local_gridmap_node" output="screen" respawn="true"/> 
+<node name="map_server" pkg="map_server" type="map_server" args="$(find hybrid_astar)/maps/map.yaml" respawn="true" />
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(env HOME)/.rviz/path_planner.rviz" />
+<!-- <node name="goal_set" pkg="goal_set" type="goal_set" respawn="true"/> -->
+<node name="local_goal_setter" pkg="goal_set" type="local_goal_setter" respawn="true" />
+<node name="hybrid_astar" pkg="hybrid_astar" type="hybrid_astar" respawn="true"/>
+<node name="vel_arr" pkg="goal_set" type="vel_arr" respawn="true"/>
+<node name="status_e2o" pkg="goal_set" type="status_e2o" respawn="true"/> 
+<!-- <node name="talker_e2o_loc_vel" pkg="goal_set" type="talker_e2o_loc_vel" />  -->
+</launch>

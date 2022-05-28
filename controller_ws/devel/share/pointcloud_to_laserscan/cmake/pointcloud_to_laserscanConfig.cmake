@@ -67,14 +67,14 @@ set(pointcloud_to_laserscan_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(pointcloud_to_laserscan_SOURCE_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/localization_dir/pcd2scan)
-  set(pointcloud_to_laserscan_DEVEL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/devel)
+  set(pointcloud_to_laserscan_SOURCE_PREFIX /home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan)
+  set(pointcloud_to_laserscan_DEVEL_PREFIX /home/student/Documents/igvc_2022/controller_ws/devel)
   set(pointcloud_to_laserscan_INSTALL_PREFIX "")
   set(pointcloud_to_laserscan_PREFIX ${pointcloud_to_laserscan_DEVEL_PREFIX})
 else()
   set(pointcloud_to_laserscan_SOURCE_PREFIX "")
   set(pointcloud_to_laserscan_DEVEL_PREFIX "")
-  set(pointcloud_to_laserscan_INSTALL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/install)
+  set(pointcloud_to_laserscan_INSTALL_PREFIX /home/student/Documents/igvc_2022/controller_ws/install)
   set(pointcloud_to_laserscan_PREFIX ${pointcloud_to_laserscan_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(pointcloud_to_laserscan_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/localization_dir/pcd2scan/include " STREQUAL " ")
+if(NOT "/home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/include " STREQUAL " ")
   set(pointcloud_to_laserscan_INCLUDE_DIRS "")
-  set(_include_dirs "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/localization_dir/pcd2scan/include")
+  set(_include_dirs "/home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/include")
   if(NOT "https://github.com/ros-perception/perception_pcl/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/ros-perception/perception_pcl/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://ros.org/wiki/perception_pcl " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_
         message(FATAL_ERROR "Project 'pointcloud_to_laserscan' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'pointcloud_to_laserscan' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/student/students/hanu/igvc_2022/controller_ws/src/igvc_self_drive_sim/localization_dir/pcd2scan/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'pointcloud_to_laserscan' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/student/Documents/igvc_2022/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/localization_dir/pcd2scan/${idir}'.  ${_report}")
     endif()
     _list_append_unique(pointcloud_to_laserscan_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/students/hanu/igvc_2022/controller_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/Documents/igvc_2022/controller_ws/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

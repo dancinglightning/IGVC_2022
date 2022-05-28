@@ -6,8 +6,13 @@
 #ifndef __WBEMIDL_H_
 #define __WBEMIDL_H_
 
+<<<<<<< Updated upstream
 #include <winapifamily.h>
 
+=======
+#include <winapifamily.h>
+
+>>>>>>> Stashed changes
 #if WINAPI_FAMILY_PARTITION (WINAPI_PARTITION_DESKTOP)
 
 #include <wbemcli.h>

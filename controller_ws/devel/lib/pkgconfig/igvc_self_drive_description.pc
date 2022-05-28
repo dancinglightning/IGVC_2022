@@ -1,4 +1,4 @@
-prefix=/home/student/students/hanu/igvc_2022/controller_ws/devel
+prefix=/home/student/Documents/igvc_2022/controller_ws/devel
 
 Name: igvc_self_drive_description
 Description: Description of igvc_self_drive_description

@@ -7,8 +7,11 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/student/students/hanu/igvc_2022/controller_ws/devel:$CMAKE_PREFIX_PATH"
+export CMAKE_PREFIX_PATH="/home/student/Documents/igvc_2022/controller_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/student/Documents/igvc_2022/controller_ws/devel/lib:$LD_LIBRARY_PATH"
 export PATH='/opt/ros/melodic/bin:/home/student/.nvm/versions/node/v6.17.1/bin:/usr/local/cuda-10.1/bin:/home/student/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
-export PWD='/home/student/students/hanu/igvc_2022/controller_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/student/students/hanu/igvc_2022/controller_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/student/students/hanu/igvc_2022/controller_ws/src:$ROS_PACKAGE_PATH"
+export PKG_CONFIG_PATH="/home/student/Documents/igvc_2022/controller_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD='/home/student/Documents/igvc_2022/controller_ws/build'
+export PYTHONPATH="/home/student/Documents/igvc_2022/controller_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
+export ROSLISP_PACKAGE_DIRECTORIES='/home/student/Documents/igvc_2022/controller_ws/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/student/Documents/igvc_2022/controller_ws/src:$ROS_PACKAGE_PATH"

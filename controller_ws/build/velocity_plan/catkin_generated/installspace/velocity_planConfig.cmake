@@ -67,14 +67,14 @@ set(velocity_plan_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(velocity_plan_SOURCE_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/src/velocity_plan)
-  set(velocity_plan_DEVEL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/devel)
+  set(velocity_plan_SOURCE_PREFIX /home/student/Documents/igvc_2022/controller_ws/src/velocity_plan)
+  set(velocity_plan_DEVEL_PREFIX /home/student/Documents/igvc_2022/controller_ws/devel)
   set(velocity_plan_INSTALL_PREFIX "")
   set(velocity_plan_PREFIX ${velocity_plan_DEVEL_PREFIX})
 else()
   set(velocity_plan_SOURCE_PREFIX "")
   set(velocity_plan_DEVEL_PREFIX "")
-  set(velocity_plan_INSTALL_PREFIX /home/student/students/hanu/igvc_2022/controller_ws/install)
+  set(velocity_plan_INSTALL_PREFIX /home/student/Documents/igvc_2022/controller_ws/install)
   set(velocity_plan_PREFIX ${velocity_plan_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/students/hanu/igvc_2022/controller_ws/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/student/Documents/igvc_2022/controller_ws/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

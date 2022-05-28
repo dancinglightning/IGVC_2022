@@ -1,0 +1,8 @@
+prefix=/home/student/Documents/igvc_2022/controller_ws/install
+
+Name: gridmap
+Description: Description of gridmap
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

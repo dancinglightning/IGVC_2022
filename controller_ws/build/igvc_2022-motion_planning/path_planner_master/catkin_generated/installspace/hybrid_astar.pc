@@ -1,0 +1,8 @@
+prefix=/home/student/Documents/igvc_2022/controller_ws/install
+
+Name: hybrid_astar
+Description: Description of hybrid_astar
+Version: 0.0.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

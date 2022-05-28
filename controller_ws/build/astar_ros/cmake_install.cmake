@@ -1,8 +1,8 @@
-# Install script for directory: /home/student/students/hanu/igvc_2022/controller_ws/src/astar_ros
+# Install script for directory: /home/student/Documents/igvc_2022/controller_ws/src/astar_ros
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/student/students/hanu/igvc_2022/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/student/Documents/igvc_2022/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,25 +43,21 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/student/students/hanu/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_ros.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/student/Documents/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_ros.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astar_ros/cmake" TYPE FILE FILES
-    "/home/student/students/hanu/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_rosConfig.cmake"
-    "/home/student/students/hanu/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_rosConfig-version.cmake"
+    "/home/student/Documents/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_rosConfig.cmake"
+    "/home/student/Documents/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/astar_rosConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astar_ros" TYPE FILE FILES "/home/student/students/hanu/igvc_2022/controller_ws/src/astar_ros/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astar_ros" TYPE FILE FILES "/home/student/Documents/igvc_2022/controller_ws/src/astar_ros/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/astar_ros" TYPE PROGRAM FILES "/home/student/students/hanu/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/MP_mock.py")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/astar_ros" TYPE PROGRAM FILES "/home/student/students/hanu/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/control_node.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/astar_ros" TYPE PROGRAM FILES "/home/student/Documents/igvc_2022/controller_ws/build/astar_ros/catkin_generated/installspace/MP_mock.py")
 endif()
 

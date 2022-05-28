@@ -163,7 +163,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-src/MP_mock.py src/control_node.py
+src/MP_mock.py
 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -210,13 +210,6 @@ DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 
 
 add_executable(astar_node src/A_ROS.cpp)
-
-
-
-
-
-
-
 
 
 add_dependencies(astar_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

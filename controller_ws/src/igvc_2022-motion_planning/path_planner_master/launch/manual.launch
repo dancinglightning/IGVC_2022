@@ -1,0 +1,16 @@
+<launch>
+
+ rosparam set use_sim_time true
+ <!-- <include file="$(find igvc_self_drive_gazebo)/launch/load_task_world.launch"/> -->
+ 
+ <!-- <include file="$(find igvc_self_drive_gazebo )/launch/spawn_gem.launch"/> -->
+ 
+ <!-- <node name="laneDetection_and_laneOccGrid_pubNode" pkg="igvc_self_drive_gazebo" type="lane_det2.py" /> -->
+ <!-- <include file="$(find pointcloud_to_laserscan)/launch/pointcloud_to_laserscan_node.launch"/> -->
+ <!-- <node name="local_map_fused" pkg="gridmap" type="fusion" output="screen" /> -->
+ <node name="hybrid_astar" pkg="hybrid_astar" type="hybrid_astar" output="screen"/>
+ <node name="tf_broadcaster" pkg="hybrid_astar" type="tf_broadcaster" />
+ <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hybrid_astar)/rviz/planner.rviz"/>
+ <node name="map_server" pkg="map_server" type="map_server" args="$(find hybrid_astar)/maps/map.yaml" />  
+
+</launch>
