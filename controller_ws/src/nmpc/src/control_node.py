@@ -291,16 +291,16 @@ class MPController():
             u0 = self.controller.make_step(self.x_0)                    # Determine optimal control inputs using the inital state given
 
             # publish the steering angle and acceleration and brake values 
-            self.acc_pub.publish(abs(u0[0][0]))
-            # if u0[0][0]>=0:
-            #     self.acc_pub.publish(u0[0][0])
-            # else:
-            #     force = u0[0][0] * self.m
-            #     torque = -0.32 * force
-            #     self.brake_pub.publish(torque)
+            # self.acc_pub.publish(abs(u0[0][0]) * 0.1)
+            if u0[0][0]>=0:
+                self.acc_pub.publish(u0[0][0] * 0.1)
+            else:
+                force = u0[0][0] * self.m
+                torque = -0.32 * force
+                self.brake_pub.publish(torque)
 
-            self.steer += u0[1][0]
-            self.steer_pub.publish(self.steer*17)
+            self.steer += u0[1][0] * 0.03
+            self.steer_pub.publish(-self.steer*17)
             self.gear_pub.publish(0)
 
             # y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs

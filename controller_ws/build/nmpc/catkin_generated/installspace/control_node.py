@@ -74,7 +74,7 @@ class MPController():
         # ROS variables
         self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)
-        self.steer_pub = rospy.Publisher('/steer_cmd', Float64, queue_size=10)
+        self.steer_pub = rospy.Publisher('/steering_cmd', Float64, queue_size=10)
         self.gear_pub = rospy.Publisher('/gear_cmd', UInt8, queue_size=10)
         self.rate = rospy.Rate(100)
         self.path_sub = rospy.Subscriber("/path", Path, self.path_callback)
@@ -290,22 +290,20 @@ class MPController():
             print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
             u0 = self.controller.make_step(self.x_0)                    # Determine optimal control inputs using the inital state given
 
-            # publish the steering angle and acceleration and brake values 
-            self.acc_pub.publish(abs(u0[0][0]))
-            # if u0[0][0]>=0:
-            #     self.acc_pub.publish(u0[0][0])
-            # else:
-            #     force = u0[0][0] * self.m
-            #     torque = -0.32 * force
-            #     self.brake_pub.publish(torque)
+            publish the steering angle and acceleration and brake values 
+            if u0[0][0]>=0:
+                self.acc_pub.publish(u0[0][0])
+            else:
+                force = u0[0][0] * self.m
+                torque = -0.32 * force
+                self.brake_pub.publish(torque)
 
-            self.steer += u0[1][0]
+            self.steer += u0[1][0] * t_s
             self.steer_pub.publish(self.steer*17)
             self.gear_pub.publish(0)
 
-            # y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
-            # self.x_0 = self.estimator.make_step(y_n)                 # estimate the next state
-            print(self.velocities)
+            y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+            self.x_0 = self.estimator.make_step(y_n)                 # estimate the next state
        
         # self.z_sim = y_n[5]
 
