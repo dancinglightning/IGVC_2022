@@ -293,7 +293,7 @@ class MPController():
             # publish the steering angle and acceleration and brake values 
             # self.acc_pub.publish(abs(u0[0][0]) * 0.1)
             if u0[0][0]>=0:
-                self.acc_pub.publish(u0[0][0] * 0.1)
+                self.acc_pub.publish(u0[0][0] * 0.03)
             else:
                 force = u0[0][0] * self.m
                 torque = -0.32 * force

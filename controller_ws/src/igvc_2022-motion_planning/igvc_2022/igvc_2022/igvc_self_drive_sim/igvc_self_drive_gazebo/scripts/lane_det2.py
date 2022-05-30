@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from cv_bridge import CvBridge, CvBridgeError
 import rospy
 from sensor_msgs.msg import Image
@@ -20,12 +20,13 @@ class opencv_algo():
     def __init__(self):
         center_CamImg_topic = "/camera_front/image_raw"
         occgrid_topic = "/cv/laneoccgrid"
-        local_goal_topic = "/move_base_simple/goal_cv"
+        local_goal_topic = "/move_base_simple/goal"
 
         rospy.Subscriber(center_CamImg_topic, Image, self.cam_Callback)
 
         self.image = None
 
+        self.curved_lane_threshold = 1e-16;
         self.local_goal = PoseStamped()
         self.local_goal.header.frame_id = "occgrid"
 
@@ -183,9 +184,27 @@ class opencv_algo():
         # cv2.imshow("TEJU", self.image)
         # print("@@@@@@@@@@@@@@@@",self.image.shape)
         warped = self.do_ipm(self.image)
-        # cv2.imshow("TEJU1", warped)
+
+        # cropping image at curved roads if 7th order coefficient is very small
+        # print(self.x_array)
         lane_occ_grid_img = self.get_occ_grid_image(warped)
-        cv2.imshow("Lane occ grid", lane_occ_grid_img)
+        x0,y0,x1,y1,x2,y2 = self.getlane_pixels(lane_occ_grid_img)
+            
+        coefficients = np.polyfit(np.asarray(y0).astype(float),np.asarray(x0).astype(float), 7)
+        # print(coefficients)       
+
+        if abs(coefficients[0]) > self.curved_lane_threshold:
+            img_crop = warped[480:720, 0:1080]
+            # cv2.imshow("TEJU1", img_crop)
+            lane_occ_grid_img = self.get_occ_grid_image(img_crop)
+            # print('crop')
+        else:
+            lane_occ_grid_img = self.get_occ_grid_image(warped)
+            # cv2.imshow("TEJU1", warped)
+            # print('no crop')
+
+ 
+
         # publish lane occ grid
         self.publishLaneOccGrid(lane_occ_grid_img)
 
