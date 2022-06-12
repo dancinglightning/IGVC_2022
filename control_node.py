@@ -25,27 +25,14 @@ import matplotlib.pyplot as plt
 # import matplotlib as mpl
 import pickle
 sys.path.append('../../')
+    
 
-
-def linear_regression(x, n, lamda=0):
-    x = np.array(x)
-    z0 = np.array([1 for i in range(n)])
-    z1 = np.array([i+1 for i in range(n)])
-    z2 = z1**2
-    z3 = z1**3
-    z4 = z1**4
-    z5 = z1**5
-    z6 = z1**6
-    z7 = z1**7
-    z = np.vstack((z0, z1, z2, z3, z4, z5, z6, z7)).T
-    return np.dot((np.linalg.inv(np.dot(z.T,z))), np.dot(z.T,x))
 
 class MPController():
-    def __init__(self, N_ref = 100):
-
-	rospy.init_node('control_node')    	
-	#Model and MPC variables
-        self.model_type = 'continuous'	
+    def __init__(self, N_ref = 1):
+   
+        #Model and MPC variables
+        self.model_type = 'continuous'  
         self.J = 375            # moment of interia
         self.La = 1.2           # distance of front tires from COM in m
         self.Lb = 1.2           # distance of back tires from COM in m
@@ -53,58 +40,94 @@ class MPController():
         self.Cy = 0.1           # Tyre stiffness constant
         self.t_s = 0.1          # sample time
         self.N = 70             # Horizon
-        self.N_ref = N_ref    # control iterations
+        self.N_ref = N_ref      # control iterations
 
 
         #self.x_z = interpolant('x_z', "bspline", [[1,2,3,4,5,6]], [1,2,3,4,5,6])
         #self.y_z = interpolant('y_z', "bspline", [[1,2,3,4,5,6]], [1,2,3,4,5,6])
         #self.v_z = interpolant('v_z', "bspline", [[1,2,3,4,5,6]], [1,2,3,4,5,6])
 
-	
+    
         # variables for control execution
         self.velocities = [1.5]    # array to store velocities
         self.path_points = []      # array to store the path
         self.c = 1
         self.packed = [self.velocities, self.c]
         self.x_initial = vertcat([0],[0],[0],[1.5],[0],[0],[0])       # intial state vector
-    	self.x_0 = self.x_initial 
-    	self.steer = 0	        # variable to store the curent state vector 
+        self.x_0 = self.x_initial 
+        self.steer = 0          # variable to store the curent state vector 
         self.z_sim = 0
 
-	    #MPC  variables
+        self.conversion_matrix_x = np.zeros((8,1))   
+        self.conversion_matrix_y = np.zeros((8,1))
+        self.conversion_matrix_v = np.zeros((8,1))
+
+        #MPC  variables
         self.model = self.mpc_model()
         self.controller = self.controller(self.model)
         self.simulator = self.mpc_simulator(self.model)
         self.estimator = do_mpc.estimator.StateFeedback(self.model)
 
-	    # ROS variables
+        
+    def loop(self):
+        rospy.init_node('control_node')
+        # ROS variables
         self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)
-        self.steer_pub = rospy.Publisher('/steer_cmd', Float64, queue_size=10)
+        self.steer_pub = rospy.Publisher('/steering_cmd', Float64, queue_size=10)
         self.gear_pub = rospy.Publisher('/gear_cmd', UInt8, queue_size=10)
-        self.rate = rospy.Rate(10)
-        self.path_sub = rospy.Subscriber("/Smooth_Hybrid_node", Path, self.path_callback)
-        self.vel_sub = rospy.Subscriber("/velocity_array2", Float64MultiArray,self.vel_callback)
+        self.rate = rospy.Rate(100)
+        self.path_sub = rospy.Subscriber("/path", Path, self.path_callback)
+        self.vel_sub = rospy.Subscriber("/velocity_array", Float64MultiArray,self.vel_callback)
         self.state_sub = rospy.Subscriber("/gazebo/model_states", ModelStates, self.state_callback)
         self.steer_sub = rospy.Subscriber("/current_steer_angle", Float64, self.steer_callback)
 
 
-
-        self.simulator.x0 = self.x_initial  
-
-        x_0 = self.simulator.x0.cat.full()
-
-        self.controller.x0 = x_0
+        self.simulator.x0 = self.x_initial
+        self.controller.x0 = self.x_initial
+        self.estimator.x0 = self.x_initial
         self.controller.set_initial_guess()
+        while not rospy.is_shutdown():
+            self.control_loop()
+            self.rate.sleep()
 
+    def linear_regression(self, x, n=0, lamda=0):
+        n = len(x)
+        z0 = np.array([1 for i in range(n)])
+        z1 = np.array([i+1 for i in range(n)])
+        z2 = z1**2
+        z3 = z1**3
+        z4 = z1**4
+        z5 = z1**5
+        z6 = z1**6
+        z7 = z1**7
+        z = np.vstack((z0, z1, z2, z3, z4, z5, z6, z7)).T
+        return np.dot(np.linalg.pinv(np.dot(z.T,z)),(np.dot(z.T,x)))
 
+    def lin_val_x(self, z):
+        self.conversion_matrix_x = self.linear_regression(z)
+
+    def lin_val_y(self, z):
+        self.conversion_matrix_y = self.linear_regression(z)
+
+    def lin_val_v(self, z):
+        self.conversion_matrix_v = self.linear_regression(z)
 
     def x_z(self,z):
-	return np.sin(z)*0.1
+        c = self.conversion_matrix_x
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
     def y_z(self,z):
-	return np.sin(z)*0.1
+        c = self.conversion_matrix_y
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
     def v_z(self,z):
-	return 1
+        c = self.conversion_matrix_v
+        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        return a
+
 
     def mpc_model(self):
         # Obtain an instance of the do-mpc model class
@@ -139,12 +162,12 @@ class MPController():
         Fyr = (self.Cy * self.Lb * phi) / (v+1e-8)
         
         equations = vertcat( v * np.sin(theta), 
-			               v * np.cos(theta),
-			               a * np.cos(delta) - (2.0 / self.m) * Fyf * np.sin(delta),
-			               phi,
-			               (1.0 / self.J) * (self.La * (self.m * a * np.sin(delta) + 2 * Fyf * np.cos(delta)) - 2 * self.Lb * Fyr),
-			               w
-			             )
+                           v * np.cos(theta),
+                           a * np.cos(delta) - (2.0 / self.m) * Fyf * np.sin(delta),
+                           phi,
+                           (1.0 / self.J) * (self.La * (self.m * a * np.sin(delta) + 2 * Fyf * np.cos(delta)) - 2 * self.Lb * Fyr),
+                           w
+                         )
         
         
         model.set_rhs('xc',equations[0])
@@ -189,7 +212,7 @@ class MPController():
         xc = model.x['xc']
         yc = model.x['yc']
         z = model.x['z']
-		    
+            
         # Objective function:
 
         # cost = (xc-1) ** 2 + (yc-10) ** 2 + (model.x['v']-1) ** 2
@@ -212,7 +235,7 @@ class MPController():
         mpc.bounds['lower','_x','delta'] = -np.pi/6
         # mpc.bounds['upper','_x','xc'] = target_x+0.1
         # mpc.bounds['upper','_x','yc'] = y_upper
-        mpc.bounds['upper','_x','v'] = 20 #max forward speed in m/s
+        mpc.bounds['upper','_x','v'] = 2.2 #max forward speed in m/s
         mpc.bounds['upper','_x','theta'] = 50
         mpc.bounds['upper','_x','phi'] = 50
         mpc.bounds['upper','_x','delta'] = np.pi/6
@@ -242,64 +265,64 @@ class MPController():
         return simulator
 
     def control_loop(self):
-	
-		################################################################################################
+    
+        ###############################################################################################
         # Set the initial conditions for first iteration
-        self.simulator.x0 = self.x_initial	
+        # self.simulator.x0 = self.x_initial  
+        # x_0 = self.simulator.x0.cat.full()
+        # self.controller.x0 = x_0
+        # self.estimator.x0 = x_0
 
-        x_0 = self.simulator.x0.cat.full()
-
-        self.controller.x0 = x_0
-        #self.estimator.x0 = x_0
-
-        self.controller.set_initial_guess()
-        self.simulator.set_initial_guess()
+        # self.controller.set_initial_guess()
+        # self.simulator.set_initial_guess()
         self.controller.reset_history()
         self.simulator.reset_history()
-    	################################################################################################
+        ###############################################################################################
 
-		# Defining arrays for state, path and velocity
+        # Defining arrays for state, path and velocity
         state = []
         x = []
         y = []
-        v = []              
-
-        steer = self.simulator.x0['delta']	
+        v = []             
+        # self.steer = self.simulator.x0['delta']  
         # Start the control loop
         for k in range(self.N_ref):
-            print('\n\n################################################    ' + str(k) + '    #########################################\n\n')		
-
-            u0 = self.controller.make_step(x_0)     	    	   # Determine optimal control inputs using the inital state given
+            print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
+            u0 = self.controller.make_step(self.x_0)                    # Determine optimal control inputs using the inital state given
 
             # publish the steering angle and acceleration and brake values 
-            if u0[0][0]>=0:
-                self.acc_pub.publish(u0[0][0]/6)
-            else:
-                force = u0[0][0] * self.m
-                torque = -0.32 * force
-                self.brake_pub.publish(torque)
-	    
-            steer += u0[1][0] * self.t_s
-            self.steer_pub.publish(steer*17)
-            self.gear_pub.publish(1)
+            self.acc_pub.publish(abs(u0[0][0]))
+            # if u0[0][0]>=0:
+            #     self.acc_pub.publish(u0[0][0])
+            # else:
+            #     force = u0[0][0] * self.m
+            #     torque = -0.32 * force
+            #     self.brake_pub.publish(torque)
 
-            y_n = self.simulator.make_step(u0)					# Simulate the next step using the control inputs
-            x_0 = self.estimator.make_step(y_n)					# estimate the next state
+            self.steer += u0[1][0]
+            self.steer_pub.publish(-self.steer*17)
+            self.gear_pub.publish(0)
+
+            # y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+            # self.x_0 = self.estimator.make_step(y_n)                 # estimate the next state
+            print(self.velocities)
+       
+        # self.z_sim = y_n[5]
+
 
         # plt.plot(x,y)
 
     def path_callback(self, path):
-	
+    
         path_repeat = False
-	print("Loop ho raha hai")
         
-	    ##################################
-	    # Step1 - Obtaining the path points
-	    ##################################
+        ##################################
+        # Step1 - Obtaining the path points
+        ##################################
         
         l = len(path.poses)                                                   # length of the path
         points = np.zeros((l,2))                                              # array for storing the path points
-	    # check for repetition on the path. 
+        # check for repetition on the path. 
         # if len(self.path_points) > 0:                                            # Prevents check the first time this fucntion is called
         #     if self.path_points[0][0] == path.poses[0].pose.position.y:            # checks the y-coordinate of path
         #         print("### repetition detected ###")
@@ -307,7 +330,7 @@ class MPController():
         #         self.path_sub.unregister()                                       # unsubscribe the topic
         #         print("####################################### path unregistered #######################################")
 
-	    # after check passed
+        # after check passed
         if not path_repeat:    
             for j in range(l):
                 points[j][0] = path.poses[j].pose.position.y
@@ -315,91 +338,70 @@ class MPController():
                 self.path_points.append([path.poses[j].pose.position.y, path.poses[j].pose.position.x])
 
 
-	    ###########################
-	    # Step2 - Interplotate
-	    ###########################
+        ###########################
+        # Step2 - Interplotate
+        ###########################
 
-	    #Cubic Spline interpolation using the indices as the variable.
-
-        # points = range(0, l)
-	    # x_z = interp.CubicSpline(z, points[1])
-	    # y_z = interp.CubicSpline(z, points[0])
-
-        # x_z = interpolant('x_z', "bspline", [points], points[1,:])
-        # y_z = interpolant('y_z', "bspline", [points], points[0,:])
-
-	    ####################################
-	    # Step3 - Update the function handles
-	    ####################################
-
-        # self.set_path(x_z, y_z)
-
-	   # print('\n\n################################################    ' + str(k) + '    #########################################\n\n')
     
-	              # shifted from bottom to top, because we need to make the subsc call first		
+        self.lin_val_x(points[:,1])
+        self.lin_val_y(points[:,0])
 
-        
+        # print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssssssssssssssssss")
+        # u0 = self.controller.make_step(self.x_0)                   # Determine optimal control inputs using the inital state given
 
-        
-        u0 = self.controller.make_step(self.x_0)     	    	   # Determine optimal control inputs using the inital state given
-
-        # publish the steering angle and acceleration and brake values 
-        if u0[0][0]>=0:
-	       self.acc_pub.publish(u0[0][0]/6)
-        else:
-    	   force = u0[0][0] * self.m
-    	   torque = -0.32 * force
-    	   self.brake_pub.publish(torque)
+        # # publish the steering angle and acceleration and brake values 
+        # if u0[0][0]>=0:
+        #    self.acc_pub.publish(u0[0][0]/6)
+        # else:
+        #    force = u0[0][0] * self.m
+        #    torque = -0.32 * force
+        #    self.brake_pub.publish(torque)
     
-        self.steer += u0[1][0] * self.t_s
-        self.steer_pub.publish(self.steer*17)
-        self.gear_pub.publish(1)
+        # self.steer += u0[1][0]
+        # self.steer_pub.publish(self.steer*170)
+        # self.gear_pub.publish(0)
 
-        y_n = self.simulator.make_step(u0)					# Simulate the next step using the control inputs
-        # x_0 = self.estimator.make_step(y_n)					# estimate the next state\
+        # y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+        # # x_0 = self.estimator.make_step(y_n)                   # estimate the next state\
 
-        self.z_sim = y_n[5]
+        # self.z_sim = y_n[5]
 
-        # plt.plot(x,y)
 
 
     def vel_callback(self, vel_arr):
 
         self.velocities.append(vel_arr.data[0])
-	    ######################################
-	    # Step1 - Obtaining the velocity points
-	    ######################################
+        ######################################
+        # Step1 - Obtaining the velocity points
+        ######################################
 
         l = len(vel_arr.data)
         vel = np.zeros((l, 1))
         for i in range(l):
             vel[i][0] = vel_arr.data[i] 
 
-	    ###########################
-	    # Step2 - Interplotate
-	    ###########################
+        ###########################
+        # Step2 - Interplotate
+        ###########################
 
-	    #Cubic Spline interpolation using the indices as the variable.
-
-        z = range(0,l)
-	    # v_z = interp.CubicSpline(z, vel)
-        # v_z = interpolant('v_z', "bspline", [z], vel)
+        # interpolation using the indices as the variable.
+        self.lin_val_v(vel)
 
 
-	    ####################################
-	    # Step3 - Update the function handles
-	    ####################################
+        ####################################
+        # Step3 - Update the function handles
+        ####################################
 
         # self.set_vel(v_z)
 
 
     def state_callback(self, state):
-	    # get the state 
-	    # update the class variable for curent state value
-	    
-	    ######################################
-	    # Step1 - Obtaining the state vector
-	    ######################################
+        # get the state 
+        # update the class variable for curent state value
+        
+        ######################################
+        # Step1 - Obtaining the state vector
+        ######################################
 
         #l_pose = len(state.pose[-1])
         #l_twist = len(state.twist[-1])
@@ -418,36 +420,30 @@ class MPController():
         twist_arr.append(state.twist[-1].linear.y)
         twist_arr.append(state.twist[-1].angular.z)
 
-	    ####################################
-	    # Step2 - Update the function handles
-	    ####################################
+        ####################################
+        # Step2 - Update the function handles
+        ####################################
 
         self.set_state(pose_arr, twist_arr)
 
     def steer_callback(self, steer):
-	    # get the state 
-	    # update the class variable for curent state value
+        # get the state 
+        # update the class variable for curent state value
 
-	    ####################################
-	    # Step1 - Update the function handles
-	    ####################################
+        ####################################
+        # Step1 - Update the function handles
+        ####################################
 
         self.set_steer(steer)
 
         
-	############## Helper Functions ##############
-	# function to fetch the current state
+    ############## Helper Functions ##############
+    # function to fetch the current state
     
     def get_curr_state(self):
         return self.state
 
-	# these set functions are used to assign the class private function handles to the calulated ones
-    def set_path(self, x_z, y_z):
-        self.x_z = x_z
-        self.y_z = y_z
-
-    def set_vel(self, v_z):
-        self.v_z = v_z
+    # these set functions are used to assign the class private function handles to the calulated ones
 
     def set_steer(self, steer):
         self.steer = steer.data
@@ -469,11 +465,10 @@ if __name__  == '__main__':
 
     # Create class object 
     controlObj = MPController()
-
+    controlObj.loop()
     # run the control loop
-    rospy.spin()
-	
-	
+    
+    
 
 
 

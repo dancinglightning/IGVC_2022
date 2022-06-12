@@ -193,8 +193,8 @@ void LidarCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 		
 		// LANE ADDING
 		 //int LaneMapShift = (((MapWidthM) - (LaneMapW*LaneMapRes))/2)/MapRes;
-		 int LaneMapShift = -21; // temporary testing values (in spawm_gem.launch => 6.19/MapRes)
-		 int CamDist = -24; // temporary testing values
+		 int LaneMapShift = -24; // temporary testing values (in spawm_gem.launch => 6.19/MapRes)
+		 int CamDist = -30; // temporary testing values
 		 for(int i=0;i<LaneMapH;i++)//adding lane data
 		 {
 		 	for(int j=0;j<LaneMapW;j++)

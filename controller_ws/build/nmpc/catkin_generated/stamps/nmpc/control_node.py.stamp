@@ -267,14 +267,14 @@ class MPController():
     def control_loop(self):
     
         ###############################################################################################
-        # Set the initial conditions for first iteration
-        # self.simulator.x0 = self.x_initial  
-        # x_0 = self.simulator.x0.cat.full()
-        # self.controller.x0 = x_0
-        # self.estimator.x0 = x_0
+        Set the initial conditions for first iteration
+        self.simulator.x0 = self.x_initial  
+        x_0 = self.simulator.x0.cat.full()
+        self.controller.x0 = x_0
+        self.estimator.x0 = x_0
 
-        # self.controller.set_initial_guess()
-        # self.simulator.set_initial_guess()
+        self.controller.set_initial_guess()
+        self.simulator.set_initial_guess()
         self.controller.reset_history()
         self.simulator.reset_history()
         ###############################################################################################
@@ -293,7 +293,7 @@ class MPController():
             # publish the steering angle and acceleration and brake values 
             # self.acc_pub.publish(abs(u0[0][0]) * 0.1)
             if u0[0][0]>=0:
-                self.acc_pub.publish(u0[0][0] * 0.1)
+                self.acc_pub.publish(u0[0][0] * 0.03)
             else:
                 force = u0[0][0] * self.m
                 torque = -0.32 * force
@@ -305,7 +305,6 @@ class MPController():
 
             # y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
             # self.x_0 = self.estimator.make_step(y_n)                 # estimate the next state
-            print(self.velocities)
        
         # self.z_sim = y_n[5]
 
