@@ -6,13 +6,12 @@ from nav_msgs.msg import Path
 from std_msgs.msg import Float64MultiArray, Float64
 from gazebo_msgs.msg import ModelStates
 from math import *
-import matplotlib.pyplot as plt
 
 
 class MP():
-	def __init__(self):
+	def _init_(self):
 		# generate a numpy array for y ranging form 0-40 unofrormly having 1000 points
-		self.x = np.linspace(-50, 50, 500)
+		self.x = np.linspace(-50, 50, 2500)
 
 		#maximum allowable ranges on the right and left
 		self.max_r = 1.5
@@ -38,24 +37,11 @@ class MP():
 		self.width.header.stamp = rospy.Time.now()
 		self.Vel= []
 		self.velocity = Float64MultiArray()
-
+		
 		for i in range(len(self.x)):
-			self.pose1 = PoseStamped()
-			
-			self.pose1.pose.position.x = self.x[i] + 25
-			self.pose1.pose.position.y = 2*sin(self.x[i])  
-			self.path.poses.append(self.pose1)
-
-			self.pose2 = PoseStamped()
-			self.pose2.pose.position.x = self.max_r
-			self.pose2.pose.position.y = self.max_l
-			self.width.poses.append(self.pose2)
-
-		self.Vel.append(self.vel)
+			self.Vel.append(self.vel)
 
 		self.velocity.data = self.Vel
-		print(self.path)
-		print(self.car_x,self.car_y)
 
 		rospy.spin()
 
@@ -63,27 +49,25 @@ class MP():
 		self.car_x = car.pose[11].position.x
 		self.car_y = car.pose[11].position.y
 
-		# self.path = Path()
-		# self.path.header.frame_id = "map"
-		# self.path.header.stamp = rospy.Time.now()
-		# for i in range(len(self.x)):
-		# 	self.pose1 = PoseStamped()
-		# 	self.pose2 = PoseStamped()
-		# 	self.pose1.pose.position.x = self.car_x + 1
-		# 	self.pose1.pose.position.y = self.car_y + 1
-		# 	self.path.poses.append(self.pose1)
+		self.path = Path()
+		self.path.header.frame_id = "map"
+		self.path.header.stamp = rospy.Time.now()
+		for i in range(len(self.x)):
+			self.pose1 = PoseStamped()
+			self.pose2 = PoseStamped()
+			self.pose1.pose.position.x = self.car_x + 1
+			self.pose1.pose.position.y = self.car_y + 1
+			self.path.poses.append(self.pose1)
 
-		# 	self.pose2.pose.position.x = self.max_r
-		# 	self.pose2.pose.position.y = self.max_l
-		# 	self.width.poses.append(self.pose2)
+			self.pose2.pose.position.x = self.max_r
+			self.pose2.pose.position.y = self.max_l
+			self.width.poses.append(self.pose2)
 
-		# print(self.path)
+		print(self.path)
 		self.pub_path.publish(self.path)
 		self.pub_vel.publish(self.velocity)
 		self.pub_width.publish(self.width)
 
 
-if __name__ == '__main__':
+if _name_ == '_main_':
 	mp_mock = MP()
-
-

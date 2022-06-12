@@ -138,6 +138,10 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/Astar_ros_node.cpp)
 
+add_executable(ppc src/purepursuit.cpp)
+target_link_libraries(ppc ${catkin_LIBRARIES})
+add_dependencies(ppc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

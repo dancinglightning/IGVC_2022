@@ -273,8 +273,8 @@ class MPController():
         # self.controller.x0 = x_0
         # self.estimator.x0 = x_0
 
-        # self.controller.set_initial_guess()
-        # self.simulator.set_initial_guess()
+        self.controller.set_initial_guess()
+        self.simulator.set_initial_guess()
         self.controller.reset_history()
         self.simulator.reset_history()
         ###############################################################################################

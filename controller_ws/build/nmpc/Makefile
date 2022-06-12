@@ -171,6 +171,44 @@ depend:
 	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+nmpc/CMakeFiles/ppc.dir/rule:
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nmpc/CMakeFiles/ppc.dir/rule
+.PHONY : nmpc/CMakeFiles/ppc.dir/rule
+
+# Convenience name for target.
+ppc: nmpc/CMakeFiles/ppc.dir/rule
+.PHONY : ppc
+
+# fast build rule for target.
+ppc/fast:
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(MAKE) $(MAKESILENT) -f nmpc/CMakeFiles/ppc.dir/build.make nmpc/CMakeFiles/ppc.dir/build
+.PHONY : ppc/fast
+
+src/purepursuit.o: src/purepursuit.cpp.o
+.PHONY : src/purepursuit.o
+
+# target to build an object file
+src/purepursuit.cpp.o:
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(MAKE) $(MAKESILENT) -f nmpc/CMakeFiles/ppc.dir/build.make nmpc/CMakeFiles/ppc.dir/src/purepursuit.cpp.o
+.PHONY : src/purepursuit.cpp.o
+
+src/purepursuit.i: src/purepursuit.cpp.i
+.PHONY : src/purepursuit.i
+
+# target to preprocess a source file
+src/purepursuit.cpp.i:
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(MAKE) $(MAKESILENT) -f nmpc/CMakeFiles/ppc.dir/build.make nmpc/CMakeFiles/ppc.dir/src/purepursuit.cpp.i
+.PHONY : src/purepursuit.cpp.i
+
+src/purepursuit.s: src/purepursuit.cpp.s
+.PHONY : src/purepursuit.s
+
+# target to generate assembly for a file
+src/purepursuit.cpp.s:
+	cd /home/student/Documents/IGVC_2022_Controls/controller_ws/build && $(MAKE) $(MAKESILENT) -f nmpc/CMakeFiles/ppc.dir/build.make nmpc/CMakeFiles/ppc.dir/src/purepursuit.cpp.s
+.PHONY : src/purepursuit.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -184,6 +222,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... ppc"
+	@echo "... src/purepursuit.o"
+	@echo "... src/purepursuit.i"
+	@echo "... src/purepursuit.s"
 .PHONY : help
 
 

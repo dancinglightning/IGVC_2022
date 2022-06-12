@@ -123,6 +123,7 @@
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/gridmap/CMakeFiles/install.dir
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/gridmap/CMakeFiles/install/local.dir
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/gridmap/CMakeFiles/install/strip.dir
+/home/student/Documents/IGVC_2022_Controls/controller_ws/build/nmpc/CMakeFiles/ppc.dir
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/nmpc/CMakeFiles/test.dir
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/nmpc/CMakeFiles/edit_cache.dir
 /home/student/Documents/IGVC_2022_Controls/controller_ws/build/nmpc/CMakeFiles/rebuild_cache.dir

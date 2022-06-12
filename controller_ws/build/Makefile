@@ -1069,6 +1069,19 @@ fusion/fast:
 .PHONY : fusion/fast
 
 #=============================================================================
+# Target rules for targets named ppc
+
+# Build rule for target.
+ppc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ppc
+.PHONY : ppc
+
+# fast build rule for target.
+ppc/fast:
+	$(MAKE) $(MAKESILENT) -f nmpc/CMakeFiles/ppc.dir/build.make nmpc/CMakeFiles/ppc.dir/build
+.PHONY : ppc/fast
+
+#=============================================================================
 # Target rules for targets named run_tests_igvc_self_drive_gazebo
 
 # Build rule for target.
@@ -2463,6 +2476,7 @@ help:
 	@echo "... map_server_utest"
 	@echo "... pointcloud_to_laserscan"
 	@echo "... pointcloud_to_laserscan_node"
+	@echo "... ppc"
 	@echo "... rtest"
 	@echo "... tf_broadcaster"
 	@echo "... vel_arr_basic"
