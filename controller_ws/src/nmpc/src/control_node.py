@@ -70,7 +70,7 @@ class MPController():
         self.vel_sub = rospy.Subscriber("/velocity_array2", Float64MultiArray,self.vel_callback)
         self.state_sub = rospy.Subscriber("/gazebo/model_states", ModelStates, self.state_callback)
         self.steer_sub = rospy.Subscriber("/current_steer_angle", Float64, self.steer_callback)
-        self.control_sub = rospy.Subscriber("/path_cmd", Float64MultiArray, self.control_callback)
+        self.control_sub = rospy.Subscriber("/path", Float64MultiArray, self.control_callback)
 
         self.acc_pub = rospy.Publisher('/throttle_cmd', Float64, queue_size=10)
         self.brake_pub = rospy.Publisher('/brake_cmd', Float64, queue_size=10)

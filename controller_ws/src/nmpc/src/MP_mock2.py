@@ -9,7 +9,7 @@ from math import *
 
 
 class MP():
-	def _init_(self):
+	def __init__(self):
 		# generate a numpy array for y ranging form 0-40 unofrormly having 1000 points
 		self.x = np.linspace(-50, 50, 2500)
 
@@ -69,5 +69,5 @@ class MP():
 		self.pub_width.publish(self.width)
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
 	mp_mock = MP()
