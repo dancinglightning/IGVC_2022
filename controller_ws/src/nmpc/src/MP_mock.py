@@ -43,7 +43,9 @@ class MP():
 			self.pose1 = PoseStamped()
 			
 			self.pose1.pose.position.x = self.x[i] + 25
-			self.pose1.pose.position.y = 2*sin(self.x[i])  
+			self.pose1.pose.position.y = 2*sin(self.x[i])
+			# self.pose1.pose.position.x = -(2*sin(self.x[i]))
+			# self.pose1.pose.position.y = -self.x[i] + 25   
 			self.path.poses.append(self.pose1)
 
 			self.pose2 = PoseStamped()

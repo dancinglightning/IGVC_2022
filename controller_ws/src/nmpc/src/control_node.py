@@ -40,7 +40,7 @@ class MPController():
         self.m = 200            # mass of vehicle in kg
         self.Cy = 0.1           # Tyre stiffness constant
         self.t_s = 0.1          # sample time
-        self.N = 70             # Horizon
+        self.N = 1              # Horizon
         self.N_ref = N_ref      # control iterations
     
         # variables for control execution
@@ -81,6 +81,7 @@ class MPController():
         self.controller.x0 = self.x_initial
         self.estimator.x0 = self.x_initial
         self.controller.set_initial_guess()
+        self.simulator.set_initial_guess()
         rospy.spin()
 
     def linear_regression(self, x, n=0, lamda=0):
@@ -266,10 +267,10 @@ class MPController():
         # self.controller.x0 = x_0
         # self.estimator.x0 = x_0
 
-        self.controller.set_initial_guess()
-        self.simulator.set_initial_guess()
-        self.controller.reset_history()
-        self.simulator.reset_history()
+        # self.controller.set_initial_guess()
+        # self.simulator.set_initial_guess()
+        # self.controller.reset_history()
+        # self.simulator.reset_history()
         ###############################################################################################
 
         # Defining arrays for state, path and velocity
@@ -281,7 +282,7 @@ class MPController():
         # Start the control loop
         for k in range(self.N_ref):
             print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
-            u0 = self.controller.make_step(self.x_0)                    # Determine optimal control inputs using the inital state given
+            u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
 
             # publish the steering angle and acceleration and brake values 
             #self.acc_pub.publish(abs(u0[0][0]))
@@ -296,11 +297,13 @@ class MPController():
             self.steer_pub.publish(-self.steer*17)
             self.gear_pub.publish(0)
 
+            print("Throttle:",u0[0][0]," Steer:",u0[1][0])
             y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
             self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
-            print(self.velocities)
-       
+            
+            
         self.z_sim = y_n[5]
+        
 
 
 
@@ -401,6 +404,7 @@ class MPController():
                               [self.steer],
                               [self.z_sim]
                             )
+
 
 
     def steer_callback(self, steer):
