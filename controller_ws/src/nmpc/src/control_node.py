@@ -204,13 +204,13 @@ class MPController():
 
         xc = model.x['xc']
         yc = model.x['yc']
-        v = model.x['v']
+        vc = model.x['v']
         z = model.x['z']
             
         # Objective function:
 
         # cost = (xc-1) ** 2 + (yc-10) ** 2 + (model.x['v']-1) ** 2
-        cost = (xc - self.x_z(z)) ** 2 + (yc - self.y_z(z)) ** 2 + (v - self.v_z(z)) ** 2
+        cost = (xc - self.x_z(z)) ** 2 + (yc - self.y_z(z)) ** 2 + (vc - self.v_z(z)) ** 2
 
         mterm = cost # terminal cost
         lterm = cost # stage cost
@@ -269,8 +269,8 @@ class MPController():
 
         # self.controller.set_initial_guess()
         # self.simulator.set_initial_guess()
-        # self.controller.reset_history()
-        # self.simulator.reset_history()
+        self.controller.reset_history()
+        self.simulator.reset_history()
         ###############################################################################################
 
         # Defining arrays for state, path and velocity
@@ -280,32 +280,27 @@ class MPController():
         v = []             
         # self.steer = self.simulator.x0['delta']  
         # Start the control loop
-        for k in range(self.N_ref):
-            print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
-            u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
+        u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
 
-            # publish the steering angle and acceleration and brake values 
-            #self.acc_pub.publish(abs(u0[0][0]))
-            if u0[0][0]>=0:
-               self.acc_pub.publish(u0[0][0])
-            else:
-                force = u0[0][0] * self.m
-                torque = -0.32 * force
-                self.brake_pub.publish(torque)
+        # publish the steering angle and acceleration and brake values 
+        #self.acc_pub.publish(abs(u0[0][0]))
+        if u0[0][0]>=0:
+           self.acc_pub.publish(u0[0][0])
+        else:
+            force = u0[0][0] * self.m
+            torque = -0.32 * force
+            self.brake_pub.publish(torque)
 
-            self.steer += u0[1][0]
-            self.steer_pub.publish(-self.steer*17)
-            self.gear_pub.publish(0)
+        self.steer += u0[1][0]
+        self.steer_pub.publish(-self.steer*17)
+        self.gear_pub.publish(0)
 
-            print("Throttle:",u0[0][0]," Steer:",u0[1][0])
-            y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
-            self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
-            
-            
-        self.z_sim = y_n[5]
-        
-
-
+        print("Throttle:",u0[0][0]," Steer:",u0[1][0], "Everything:", u0)
+        y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+        print("y_n:", y_n)
+        # self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
+             
+        self.z_sim = y_n[6]
 
     def path_callback(self, path):
 

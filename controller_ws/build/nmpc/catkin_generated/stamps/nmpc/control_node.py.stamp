@@ -282,7 +282,7 @@ class MPController():
         # Start the control loop
         for k in range(self.N_ref):
             print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
-            u0 = self.controller.make_step(self.x_0)                    # Determine optimal control inputs using the inital state given
+            u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
 
             # publish the steering angle and acceleration and brake values 
             #self.acc_pub.publish(abs(u0[0][0]))
@@ -303,6 +303,7 @@ class MPController():
             
             
         self.z_sim = y_n[5]
+        
 
 
 
@@ -403,7 +404,7 @@ class MPController():
                               [self.steer],
                               [self.z_sim]
                             )
-        print(self.x_0)
+
 
 
     def steer_callback(self, steer):
