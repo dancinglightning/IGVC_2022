@@ -134,19 +134,15 @@ class MPController():
         phi = model.set_variable(var_type='_x',var_name='phi',shape = (1,1))                   # yaw angular velocity
         delta = model.set_variable(var_type='_x',var_name='delta',shape = (1,1))               # steering angle
         
-
         # virtual state for timing law
         z = model.set_variable(var_type='_x', var_name='z', shape = (1,1))
     
-
         #control inputs
         a = model.set_variable(var_type='_u',var_name='a',shape = (1,1))    # acceleration
         w = model.set_variable(var_type='_u',var_name='w',shape = (1,1))    # steering rate (angular)
 
-
         # virtual control input for timing law
         u_v = model.set_variable(var_type='_u',var_name='u_v', shape=(1,1))
-
 
         # Set right-hand-side of ODE for all introduced states (_x).
         # Names are inherited from the state definition.
@@ -269,8 +265,8 @@ class MPController():
 
         # self.controller.set_initial_guess()
         # self.simulator.set_initial_guess()
-        # self.controller.reset_history()
-        # self.simulator.reset_history()
+        self.controller.reset_history()
+        self.simulator.reset_history()
         ###############################################################################################
 
         # Defining arrays for state, path and velocity
@@ -280,32 +276,27 @@ class MPController():
         v = []             
         # self.steer = self.simulator.x0['delta']  
         # Start the control loop
-        for k in range(self.N_ref):
-            print('\n\n################################################    ' + str(k) + '    #########################################\n\n')       
-            u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
+        u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
 
-            # publish the steering angle and acceleration and brake values 
-            #self.acc_pub.publish(abs(u0[0][0]))
-            if u0[0][0]>=0:
-               self.acc_pub.publish(u0[0][0])
-            else:
-                force = u0[0][0] * self.m
-                torque = -0.32 * force
-                self.brake_pub.publish(torque)
+        # publish the steering angle and acceleration and brake values 
+        #self.acc_pub.publish(abs(u0[0][0]))
+        if u0[0][0]>=0:
+           self.acc_pub.publish(u0[0][0])
+        else:
+            force = u0[0][0] * self.m
+            torque = -0.32 * force
+            self.brake_pub.publish(torque)
 
-            self.steer += u0[1][0]
-            self.steer_pub.publish(-self.steer*17)
-            self.gear_pub.publish(0)
+        self.steer += u0[1][0]
+        self.steer_pub.publish(-self.steer*17)
+        self.gear_pub.publish(0)
 
-            print("Throttle:",u0[0][0]," Steer:",u0[1][0])
-            y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
-            self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
-            
-            
-        self.z_sim = y_n[5]
-        
-
-
+        print("Throttle:",u0[0][0]," Steer:",u0[1][0], "Everything:", u0)
+        y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+        print("y_n:", y_n)
+        # self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
+             
+        self.z_sim = y_n[6]
 
     def path_callback(self, path):
 

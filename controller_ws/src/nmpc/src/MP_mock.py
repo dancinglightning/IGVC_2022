@@ -42,10 +42,8 @@ class MP():
 		for i in range(len(self.x)):
 			self.pose1 = PoseStamped()
 			
-			self.pose1.pose.position.x = self.x[i] + 25
+			self.pose1.pose.position.x = self.x[i]
 			self.pose1.pose.position.y = 2*sin(self.x[i])
-			# self.pose1.pose.position.x = -(2*sin(self.x[i]))
-			# self.pose1.pose.position.y = -self.x[i] + 25   
 			self.path.poses.append(self.pose1)
 
 			self.pose2 = PoseStamped()
@@ -54,10 +52,7 @@ class MP():
 			self.width.poses.append(self.pose2)
 
 		self.Vel.append(self.vel)
-
 		self.velocity.data = self.Vel
-		print(self.path)
-		print(self.car_x,self.car_y)
 
 		rospy.spin()
 
