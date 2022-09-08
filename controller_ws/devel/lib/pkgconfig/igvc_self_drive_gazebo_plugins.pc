@@ -1,8 +1,8 @@
-prefix=/home/student/Documents/IGVC_2022_Controls/controller_ws/devel
+prefix=/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel
 
 Name: igvc_self_drive_gazebo_plugins
 Description: Description of igvc_self_drive_gazebo_plugins
 Version: 0.1.4
-Cflags: -I/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/include
+Cflags: -I/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/include
 Libs: -L${prefix}/lib -ligvc_self_drive_gazebo_plugins_cam -ligvc_self_drive_gazebo_plugins_vehicle
 Requires: 

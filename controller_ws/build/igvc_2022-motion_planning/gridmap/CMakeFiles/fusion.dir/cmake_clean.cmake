@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion"
-  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion.pdb"
+  "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion"
+  "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/fusion.pdb"
   "CMakeFiles/fusion.dir/src/fusion.cpp.o"
-  "CMakeFiles/fusion.dir/src/fusion.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

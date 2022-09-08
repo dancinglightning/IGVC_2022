@@ -1,8 +1,8 @@
-# Install script for directory: /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins
+# Install script for directory: /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/student/Documents/IGVC_2022_Controls/controller_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,24 +37,19 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_plugins.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_plugins.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/lidar_gazebo_plugins/cmake" TYPE FILE FILES
-    "/home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_pluginsConfig.cmake"
-    "/home/student/Documents/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_pluginsConfig-version.cmake"
+    "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_pluginsConfig.cmake"
+    "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/build/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/catkin_generated/installspace/lidar_gazebo_pluginsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/lidar_gazebo_plugins" TYPE FILE FILES "/home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/lidar_gazebo_plugins" TYPE FILE FILES "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -64,12 +59,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar.so"
-         OLD_RPATH "/usr/lib/x86_64-linux-gnu/gazebo-9/plugins:/opt/ros/melodic/lib:"
+         OLD_RPATH "/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/noetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar.so")
@@ -87,12 +82,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar_gpu.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar_gpu.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/libgazebo_ros_lidar_gpu.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar_gpu.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar_gpu.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar_gpu.so"
-         OLD_RPATH "/usr/lib/x86_64-linux-gnu/gazebo-9/plugins:/opt/ros/melodic/lib:"
+         OLD_RPATH "/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/noetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libgazebo_ros_lidar_gpu.so")
@@ -104,6 +99,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lidar_gazebo_plugins" TYPE DIRECTORY FILES "/home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/include/lidar_gazebo_plugins/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/lidar_gazebo_plugins" TYPE DIRECTORY FILES "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/igvc_2022/igvc_2022/igvc_self_drive_sim/lidar_gazebo_plugins/include/lidar_gazebo_plugins/")
 endif()
 

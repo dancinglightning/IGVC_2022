@@ -67,14 +67,14 @@ set(hybrid_astar_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(hybrid_astar_SOURCE_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master)
-  set(hybrid_astar_DEVEL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/devel)
+  set(hybrid_astar_SOURCE_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/path_planner_master)
+  set(hybrid_astar_DEVEL_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel)
   set(hybrid_astar_INSTALL_PREFIX "")
   set(hybrid_astar_PREFIX ${hybrid_astar_DEVEL_PREFIX})
 else()
   set(hybrid_astar_SOURCE_PREFIX "")
   set(hybrid_astar_DEVEL_PREFIX "")
-  set(hybrid_astar_INSTALL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/install)
+  set(hybrid_astar_INSTALL_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install)
   set(hybrid_astar_PREFIX ${hybrid_astar_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/Documents/IGVC_2022_Controls/controller_ws/install/lib;/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install/lib;/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(hybrid_astar_LIBRARIES ${hybrid_astar_LIBRARIES})
 
   _list_append_unique(hybrid_astar_LIBRARY_DIRS ${${hybrid_astar_dep}_LIBRARY_DIRS})
-  list(APPEND hybrid_astar_EXPORTED_TARGETS ${${hybrid_astar_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(hybrid_astar_EXPORTED_TARGETS ${${hybrid_astar_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

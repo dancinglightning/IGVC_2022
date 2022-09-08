@@ -1,8 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/map"
-  "/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/map.pdb"
+  "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/map"
+  "/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib/gridmap/map.pdb"
   "CMakeFiles/map.dir/src/map.cpp.o"
-  "CMakeFiles/map.dir/src/map.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

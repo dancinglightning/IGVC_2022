@@ -7,14 +7,14 @@ project(nmpc)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin COMPONENTS
+find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   nav_msgs
   roscpp
   std_msgs
 )
 
-find_package(OpenCV)
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -170,6 +170,7 @@ catkin_install_python(PROGRAMS
 src/control_node.py
 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

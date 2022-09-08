@@ -1,8 +1,0 @@
-prefix=/home/student/Documents/IGVC_2022_Controls/controller_ws/install
-
-Name: velocity_plan
-Description: Description of velocity_plan
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

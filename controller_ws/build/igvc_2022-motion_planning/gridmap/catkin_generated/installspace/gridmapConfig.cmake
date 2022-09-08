@@ -67,14 +67,14 @@ set(gridmap_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(gridmap_SOURCE_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/gridmap)
-  set(gridmap_DEVEL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/devel)
+  set(gridmap_SOURCE_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/src/igvc_2022-motion_planning/gridmap)
+  set(gridmap_DEVEL_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel)
   set(gridmap_INSTALL_PREFIX "")
   set(gridmap_PREFIX ${gridmap_DEVEL_PREFIX})
 else()
   set(gridmap_SOURCE_PREFIX "")
   set(gridmap_DEVEL_PREFIX "")
-  set(gridmap_INSTALL_PREFIX /home/student/Documents/IGVC_2022_Controls/controller_ws/install)
+  set(gridmap_INSTALL_PREFIX /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install)
   set(gridmap_PREFIX ${gridmap_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/student/Documents/IGVC_2022_Controls/controller_ws/install/lib;/home/student/Documents/IGVC_2022_Controls/controller_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install/lib;/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(gridmap_LIBRARIES ${gridmap_LIBRARIES})
 
   _list_append_unique(gridmap_LIBRARY_DIRS ${${gridmap_dep}_LIBRARY_DIRS})
-  list(APPEND gridmap_EXPORTED_TARGETS ${${gridmap_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(gridmap_EXPORTED_TARGETS ${${gridmap_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

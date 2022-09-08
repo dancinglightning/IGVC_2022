@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 import rospy
 from std_msgs.msg import Float64MultiArray
 from std_msgs.msg import Float32
@@ -82,6 +82,8 @@ class MPController():
         self.estimator.x0 = self.x_initial
         self.controller.set_initial_guess()
         self.simulator.set_initial_guess()
+        self.controller.reset_history()
+        self.simulator.reset_history()
         rospy.spin()
 
     def linear_regression(self, x, n=0, lamda=0):
@@ -106,19 +108,20 @@ class MPController():
     def lin_val_v(self, z):
         self.conversion_matrix_v = self.linear_regression(z)
 
-    def x_z(self,z):
+    def x_z(self,z, x_c0):
         c = self.conversion_matrix_x
-        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        x_c0['x_c0', 0] = c[0]
+        a = c[0]*1 + c[1]*z + c[2]*(z**2) + c[3]*(z**3) + c[4]*(z**4) + c[5]*(z**5) + c[6]*(z**6) + c[7]*(z**7)
         return a
 
     def y_z(self,z):
         c = self.conversion_matrix_y
-        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        a = c[0]*1 + c[1]*z + c[2]*(z**2) + c[3]*(z**3) + c[4]*(z**4) + c[5]*(z**5) + c[6]*(z**6) + c[7]*(z**7) 
         return a
 
     def v_z(self,z):
         c = self.conversion_matrix_v
-        a = c[0]*1 + c[1]*z + c[2]*z**2 + c[3]*z**3 + c[4]*z**4 + c[5]*z**5 +c[6]*z**6 +c[7]*z**7 
+        a = c[0]*1 + c[1]*z + c[2]*(z**2) + c[3]*(z**3) + c[4]*(z**4) + c[5]*(z**5) + c[6]*(z**6) + c[7]*(z**7) 
         return a
 
 
@@ -133,7 +136,35 @@ class MPController():
         theta = model.set_variable(var_type='_x',var_name='theta',shape = (1,1))               # yaw angle
         phi = model.set_variable(var_type='_x',var_name='phi',shape = (1,1))                   # yaw angular velocity
         delta = model.set_variable(var_type='_x',var_name='delta',shape = (1,1))               # steering angle
-        
+
+        x_c0 = model.set_variable(var_type='_p',var_name='x_c0',shape = (1,1))
+        x_c1 = model.set_variable(var_type='_p',var_name='x_c1',shape = (1,1))
+        x_c2 = model.set_variable(var_type='_p',var_name='x_c2',shape = (1,1))
+        x_c3 = model.set_variable(var_type='_p',var_name='x_c3',shape = (1,1))
+        x_c4 = model.set_variable(var_type='_p',var_name='x_c4',shape = (1,1))
+        x_c5 = model.set_variable(var_type='_p',var_name='x_c5',shape = (1,1))
+        x_c6 = model.set_variable(var_type='_p',var_name='x_c6',shape = (1,1))
+        x_c7 = model.set_variable(var_type='_p',var_name='x_c7',shape = (1,1))
+
+        y_c0 = model.set_variable(var_type='_p',var_name='y_c0',shape = (1,1))
+        y_c1 = model.set_variable(var_type='_p',var_name='y_c1',shape = (1,1))
+        y_c2 = model.set_variable(var_type='_p',var_name='y_c2',shape = (1,1))
+        y_c3 = model.set_variable(var_type='_p',var_name='y_c3',shape = (1,1))
+        y_c4 = model.set_variable(var_type='_p',var_name='y_c4',shape = (1,1))
+        y_c5 = model.set_variable(var_type='_p',var_name='y_c5',shape = (1,1))
+        y_c6 = model.set_variable(var_type='_p',var_name='y_c6',shape = (1,1))
+        y_c7 = model.set_variable(var_type='_p',var_name='y_c7',shape = (1,1))
+
+        v_c0 = model.set_variable(var_type='_p',var_name='v_c0',shape = (1,1))
+        v_c1 = model.set_variable(var_type='_p',var_name='v_c1',shape = (1,1))
+        v_c2 = model.set_variable(var_type='_p',var_name='v_c2',shape = (1,1))
+        v_c3 = model.set_variable(var_type='_p',var_name='v_c3',shape = (1,1))
+        v_c4 = model.set_variable(var_type='_p',var_name='v_c4',shape = (1,1))
+        v_c5 = model.set_variable(var_type='_p',var_name='v_c5',shape = (1,1))
+        v_c6 = model.set_variable(var_type='_p',var_name='v_c6',shape = (1,1))
+        v_c7 = model.set_variable(var_type='_p',var_name='v_c7',shape = (1,1))
+
+
         # virtual state for timing law
         z = model.set_variable(var_type='_x', var_name='z', shape = (1,1))
     
@@ -202,12 +233,12 @@ class MPController():
         yc = model.x['yc']
         v = model.x['v']
         z = model.x['z']
+        x_c0 = model.p
             
         # Objective function:
 
         # cost = (xc-1) ** 2 + (yc-10) ** 2 + (model.x['v']-1) ** 2
-        cost = (xc - self.x_z(z)) ** 2 + (yc - self.y_z(z)) ** 2 + (v - self.v_z(z)) ** 2
-
+        cost = (xc - x_c0['x_c0',0]*z) ** 2 + (yc - self.y_z(z)) ** 2 + (v - self.v_z(z)) ** 2
         mterm = cost # terminal cost
         lterm = cost # stage cost
 
@@ -265,39 +296,14 @@ class MPController():
 
         # self.controller.set_initial_guess()
         # self.simulator.set_initial_guess()
-        self.controller.reset_history()
-        self.simulator.reset_history()
+        # self.controller.reset_history()
+        # self.simulator.reset_history()
         ###############################################################################################
 
         # Defining arrays for state, path and velocity
-        state = []
-        x = []
-        y = []
-        v = []             
-        # self.steer = self.simulator.x0['delta']  
-        # Start the control loop
-        u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
 
-        # publish the steering angle and acceleration and brake values 
-        #self.acc_pub.publish(abs(u0[0][0]))
-        if u0[0][0]>=0:
-           self.acc_pub.publish(u0[0][0])
-        else:
-            force = u0[0][0] * self.m
-            torque = -0.32 * force
-            self.brake_pub.publish(torque)
-
-        self.steer += u0[1][0]
-        self.steer_pub.publish(-self.steer*17)
-        self.gear_pub.publish(0)
-
-        print("Throttle:",u0[0][0]," Steer:",u0[1][0], "Everything:", u0)
-        y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
-        print("y_n:", y_n)
-        # self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
-             
-        self.z_sim = y_n[6]
-
+        a = 2
+        
     def path_callback(self, path):
 
         path_repeat = False
@@ -328,10 +334,41 @@ class MPController():
         # Step2 - Interplotate
         ###########################
 
-    
+        self.z_sim = 0
         self.lin_val_x(points[:,1])
         self.lin_val_y(points[:,0])
 
+
+        state = []
+        x = []
+        y = []
+        v = []             
+        # self.steer = self.simulator.x0['delta']  
+        # Start the control loop
+        print(self.conversion_matrix_x, self.conversion_matrix_y)
+        print("BEFORE STATE:", self.x_0)
+
+        u0 = self.controller.make_step(self.x_0)                  # Determine optimal control inputs using the inital state given
+
+        # publish the steering angle and acceleration and brake values 
+        #self.acc_pub.publish(abs(u0[0][0]))
+        if u0[0][0]>=0:
+            self.acc_pub.publish(u0[0][0])
+        else:
+            force = u0[0][0] * self.m
+            torque = -0.32 * force
+            self.brake_pub.publish(torque)
+
+        self.steer += u0[1][0]
+        self.steer_pub.publish(-self.steer*17)
+        self.gear_pub.publish(0)
+
+        print("CONTROL INPUTS:", u0)
+        y_n = self.simulator.make_step(u0)                  # Simulate the next step using the control inputs
+        print("AFTER STATE:", y_n)
+        # self.x_0 = self.estimator.make_step(y_n)            # Estimate the next state
+             
+        self.z_sim = y_n[6]
 
 
     def vel_callback(self, vel_arr):
@@ -394,8 +431,7 @@ class MPController():
                               [float(twist_arr[2])],
                               [self.steer],
                               [self.z_sim]
-                            )
-
+                        )
 
 
     def steer_callback(self, steer):

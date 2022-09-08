@@ -12,10 +12,11 @@ import matplotlib.pyplot as plt
 class MP():
 	def __init__(self):
 		# generate a numpy array for y ranging form 0-40 unofrormly having 1000 points
-		self.x = np.linspace(-50, 50, 500)
+		self.x = np.linspace(10, 110, 500)
 
 		#maximum allowable ranges on the right and left
 		self.max_r = 1.5
+
 		self.max_l = 1.5
 
 		self.vel = 20
@@ -43,7 +44,7 @@ class MP():
 			self.pose1 = PoseStamped()
 			
 			self.pose1.pose.position.x = self.x[i]
-			self.pose1.pose.position.y = 2*sin(self.x[i])
+			self.pose1.pose.position.y = 10
 			self.path.poses.append(self.pose1)
 
 			self.pose2 = PoseStamped()
@@ -53,13 +54,13 @@ class MP():
 
 		self.Vel.append(self.vel)
 		self.velocity.data = self.Vel
-
+		
 		rospy.spin()
 
 	def car_callback(self, car):
 		self.car_x = car.pose[11].position.x
 		self.car_y = car.pose[11].position.y
-
+		print('Position of car,', self.car_x, self.car_y)
 		# self.path = Path()
 		# self.path.header.frame_id = "map"
 		# self.path.header.stamp = rospy.Time.now()

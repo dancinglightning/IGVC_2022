@@ -1,4 +1,4 @@
-prefix=/home/student/Documents/IGVC_2022_Controls/controller_ws/install
+prefix=/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install
 
 Name: nmpc
 Description: Description of nmpc
