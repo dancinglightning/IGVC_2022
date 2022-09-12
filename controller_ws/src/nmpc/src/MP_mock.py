@@ -31,26 +31,26 @@ class MP():
 		self.pub_vel = rospy.Publisher('/velocity_array2', Float64MultiArray, queue_size=10)
 		self.pub_width = rospy.Publisher('/safewidth_node', Path, queue_size=10)
 
-		self.path = Path()
-		self.path.header.frame_id = "map"
-		self.path.header.stamp = rospy.Time.now()
+		#self.path = Path()
+		#self.path.header.frame_id = "map"
+		#self.path.header.stamp = rospy.Time.now()
 		self.width = Path()
 		self.width.header.frame_id = "map"
 		self.width.header.stamp = rospy.Time.now()
 		self.Vel= []
 		self.velocity = Float64MultiArray()
 
-		for i in range(len(self.x)):
-			self.pose1 = PoseStamped()
-			
-			self.pose1.pose.position.x = self.x[i]
-			self.pose1.pose.position.y = 10
-			self.path.poses.append(self.pose1)
+		#for i in range(len(self.x)):
+		#	self.pose1 = PoseStamped()
+		#	
+		#	self.pose1.pose.position.x = self.x[i]
+		#	self.pose1.pose.position.y = 10
+		#	self.path.poses.append(self.pose1)
 
-			self.pose2 = PoseStamped()
-			self.pose2.pose.position.x = self.max_r
-			self.pose2.pose.position.y = self.max_l
-			self.width.poses.append(self.pose2)
+		#	self.pose2 = PoseStamped()
+		#	self.pose2.pose.position.x = self.max_r
+		#	self.pose2.pose.position.y = self.max_l
+		#	self.width.poses.append(self.pose2)
 
 		self.Vel.append(self.vel)
 		self.velocity.data = self.Vel
@@ -61,21 +61,21 @@ class MP():
 		self.car_x = car.pose[11].position.x
 		self.car_y = car.pose[11].position.y
 		print('Position of car,', self.car_x, self.car_y)
-		# self.path = Path()
-		# self.path.header.frame_id = "map"
-		# self.path.header.stamp = rospy.Time.now()
-		# for i in range(len(self.x)):
-		# 	self.pose1 = PoseStamped()
-		# 	self.pose2 = PoseStamped()
-		# 	self.pose1.pose.position.x = self.car_x + 1
-		# 	self.pose1.pose.position.y = self.car_y + 1
-		# 	self.path.poses.append(self.pose1)
+		self.path = Path()
+		self.path.header.frame_id = "map"
+		self.path.header.stamp = rospy.Time.now()
+		for i in range(1, len(self.x)):
+			self.pose1 = PoseStamped()
+			self.pose2 = PoseStamped()
+			self.pose1.pose.position.x = self.car_x + 1
+			self.pose1.pose.position.y = self.car_y
+			self.path.poses.append(self.pose1)
 
-		# 	self.pose2.pose.position.x = self.max_r
-		# 	self.pose2.pose.position.y = self.max_l
-		# 	self.width.poses.append(self.pose2)
+			self.pose2.pose.position.x = self.max_r
+			self.pose2.pose.position.y = self.max_l
+			self.width.poses.append(self.pose2)
 
-		# print(self.path)
+		print(self.path)
 		self.pub_path.publish(self.path)
 		self.pub_vel.publish(self.velocity)
 		self.pub_width.publish(self.width)
