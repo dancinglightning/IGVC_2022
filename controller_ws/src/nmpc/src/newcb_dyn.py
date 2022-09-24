@@ -269,7 +269,7 @@ class NMPController():
                 'collocation_type': 'radau',
                 'collocation_deg': 2,
                 'collocation_ni': 2,
-                'store_full_solution': True,
+                'store_full_solution': False,
                 
             }
 

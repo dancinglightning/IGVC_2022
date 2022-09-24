@@ -1,2 +1,0 @@
-igvc_self_drive_description:igvc_self_drive_gazebo:igvc_self_drive_gazebo_plugins:igvc_self_drive_sim:lidar_gazebo_plugins:nmpc
--DCATKIN_DEVEL_PREFIX=/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/devel -DCMAKE_INSTALL_PREFIX=/home/hanan/Documents/GitHub/IGVC_2022_Controls/controller_ws/install -G Unix Makefiles
